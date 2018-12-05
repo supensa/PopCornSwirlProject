@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		596D65F921B776BA00C144BD /* API+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D65F821B776BA00C144BD /* API+Ext.swift */; };
+		59B3799121AFA70B00956BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B3799021AFA70B00956BF3 /* AppDelegate.swift */; };
+		59B3799321AFA70B00956BF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B3799221AFA70B00956BF3 /* LoginViewController.swift */; };
+		59B3799621AFA70B00956BF3 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3799421AFA70B00956BF3 /* login.storyboard */; };
+		59B3799821AFA70D00956BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B3799721AFA70D00956BF3 /* Assets.xcassets */; };
+		59B3799B21AFA70D00956BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3799921AFA70D00956BF3 /* LaunchScreen.storyboard */; };
+		59BB2D1721B4DDB300B13ADD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */; };
+		59BB2D1921B4FA7500B13ADD /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */; };
+		59BB2D1B21B4FAB300B13ADD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1A21B4FAB300B13ADD /* API.swift */; };
+		59BB2D1D21B5016900B13ADD /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1C21B5016900B13ADD /* TokenParser.swift */; };
+		59BB2D1F21B5128700B13ADD /* SessionIdParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */; };
+		59EAAFAA21B331C000836C17 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59EAAFA921B331C000836C17 /* main.storyboard */; };
+		59FFB6C021B74FD700632C35 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */; };
+		BABE00E3B198C6042237A71C /* Pods_PopCornSwirl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D16E8E5A096CB27F7820F70 /* Pods_PopCornSwirl.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D16E8E5A096CB27F7820F70 /* Pods_PopCornSwirl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopCornSwirl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		596D65F821B776BA00C144BD /* API+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Ext.swift"; sourceTree = "<group>"; };
+		59B3798D21AFA70B00956BF3 /* PopCornSwirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopCornSwirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B3799021AFA70B00956BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		59B3799221AFA70B00956BF3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		59B3799521AFA70B00956BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/login.storyboard; sourceTree = "<group>"; };
+		59B3799721AFA70D00956BF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		59B3799A21AFA70D00956BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		59B3799C21AFA70D00956BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		59BB2D1A21B4FAB300B13ADD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		59BB2D1C21B5016900B13ADD /* TokenParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
+		59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIdParser.swift; sourceTree = "<group>"; };
+		59EAAFA921B331C000836C17 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		6680E7FF07EE41068BC766E1 /* Pods-PopCornSwirl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopCornSwirl.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl.release.xcconfig"; sourceTree = "<group>"; };
+		9C93E1B68A2932FCDD8A085A /* Pods-PopCornSwirl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopCornSwirl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		59B3798A21AFA70B00956BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BABE00E3B198C6042237A71C /* Pods_PopCornSwirl.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		59B3798421AFA70B00956BF3 = {
+			isa = PBXGroup;
+			children = (
+				59B3798F21AFA70B00956BF3 /* PopCornSwirl */,
+				59B3798E21AFA70B00956BF3 /* Products */,
+				695BD1EE87CFBA2DD15CB934 /* Pods */,
+				7A7ECDF092EBB018EC22A5C5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		59B3798E21AFA70B00956BF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59B3798D21AFA70B00956BF3 /* PopCornSwirl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59B3798F21AFA70B00956BF3 /* PopCornSwirl */ = {
+			isa = PBXGroup;
+			children = (
+				59EAAFA821B32CE700836C17 /* Supporting Files */,
+				59EAAFA721B32CCB00836C17 /* Model */,
+				59EAAFA621B32CBA00836C17 /* View */,
+				59EAAFA521B32CB000836C17 /* Controller */,
+				59EAAFA421B32CA400836C17 /* Network */,
+			);
+			path = PopCornSwirl;
+			sourceTree = "<group>";
+		};
+		59EAAFA421B32CA400836C17 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				59BB2D1A21B4FAB300B13ADD /* API.swift */,
+				596D65F821B776BA00C144BD /* API+Ext.swift */,
+				59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */,
+				59FFB6C121B767AD00632C35 /* Parser */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		59EAAFA521B32CB000836C17 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59B3799021AFA70B00956BF3 /* AppDelegate.swift */,
+				59B3799221AFA70B00956BF3 /* LoginViewController.swift */,
+				59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */,
+				59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		59EAAFA621B32CBA00836C17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59B3799421AFA70B00956BF3 /* login.storyboard */,
+				59EAAFA921B331C000836C17 /* main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59EAAFA721B32CCB00836C17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59EAAFA821B32CE700836C17 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				59B3799921AFA70D00956BF3 /* LaunchScreen.storyboard */,
+				59B3799721AFA70D00956BF3 /* Assets.xcassets */,
+				59B3799C21AFA70D00956BF3 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59FFB6C121B767AD00632C35 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				59BB2D1C21B5016900B13ADD /* TokenParser.swift */,
+				59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		695BD1EE87CFBA2DD15CB934 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C93E1B68A2932FCDD8A085A /* Pods-PopCornSwirl.debug.xcconfig */,
+				6680E7FF07EE41068BC766E1 /* Pods-PopCornSwirl.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A7ECDF092EBB018EC22A5C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D16E8E5A096CB27F7820F70 /* Pods_PopCornSwirl.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		59B3798C21AFA70B00956BF3 /* PopCornSwirl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59B3799F21AFA70D00956BF3 /* Build configuration list for PBXNativeTarget "PopCornSwirl" */;
+			buildPhases = (
+				E914F9C20A19194327CAA52C /* [CP] Check Pods Manifest.lock */,
+				59B3798921AFA70B00956BF3 /* Sources */,
+				59B3798A21AFA70B00956BF3 /* Frameworks */,
+				59B3798B21AFA70B00956BF3 /* Resources */,
+				FCF33F6BF33F2F3245CA9021 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopCornSwirl;
+			productName = PopCornSwirl;
+			productReference = 59B3798D21AFA70B00956BF3 /* PopCornSwirl.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		59B3798521AFA70B00956BF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Spencer Forrest";
+				TargetAttributes = {
+					59B3798C21AFA70B00956BF3 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 59B3798821AFA70B00956BF3 /* Build configuration list for PBXProject "PopCornSwirl" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 59B3798421AFA70B00956BF3;
+			productRefGroup = 59B3798E21AFA70B00956BF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59B3798C21AFA70B00956BF3 /* PopCornSwirl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59B3798B21AFA70B00956BF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59B3799B21AFA70D00956BF3 /* LaunchScreen.storyboard in Resources */,
+				59B3799821AFA70D00956BF3 /* Assets.xcassets in Resources */,
+				59B3799621AFA70B00956BF3 /* login.storyboard in Resources */,
+				59EAAFAA21B331C000836C17 /* main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E914F9C20A19194327CAA52C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopCornSwirl-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCF33F6BF33F2F3245CA9021 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59B3798921AFA70B00956BF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59BB2D1D21B5016900B13ADD /* TokenParser.swift in Sources */,
+				59FFB6C021B74FD700632C35 /* WelcomeViewController.swift in Sources */,
+				596D65F921B776BA00C144BD /* API+Ext.swift in Sources */,
+				59B3799321AFA70B00956BF3 /* LoginViewController.swift in Sources */,
+				59BB2D1921B4FA7500B13ADD /* AuthenticationController.swift in Sources */,
+				59B3799121AFA70B00956BF3 /* AppDelegate.swift in Sources */,
+				59BB2D1721B4DDB300B13ADD /* LoadingViewController.swift in Sources */,
+				59BB2D1B21B4FAB300B13ADD /* API.swift in Sources */,
+				59BB2D1F21B5128700B13ADD /* SessionIdParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		59B3799421AFA70B00956BF3 /* login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59B3799521AFA70B00956BF3 /* Base */,
+			);
+			name = login.storyboard;
+			sourceTree = "<group>";
+		};
+		59B3799921AFA70D00956BF3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59B3799A21AFA70D00956BF3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		59B3799D21AFA70D00956BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		59B3799E21AFA70D00956BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		59B379A021AFA70D00956BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C93E1B68A2932FCDD8A085A /* Pods-PopCornSwirl.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HT9N5JEKMU;
+				INFOPLIST_FILE = "$(SRCROOT)/PopCornSwirl/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devmob.PopCornSwirl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59B379A121AFA70D00956BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6680E7FF07EE41068BC766E1 /* Pods-PopCornSwirl.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HT9N5JEKMU;
+				INFOPLIST_FILE = "$(SRCROOT)/PopCornSwirl/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devmob.PopCornSwirl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59B3798821AFA70B00956BF3 /* Build configuration list for PBXProject "PopCornSwirl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B3799D21AFA70D00956BF3 /* Debug */,
+				59B3799E21AFA70D00956BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59B3799F21AFA70D00956BF3 /* Build configuration list for PBXNativeTarget "PopCornSwirl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59B379A021AFA70D00956BF3 /* Debug */,
+				59B379A121AFA70D00956BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 59B3798521AFA70B00956BF3 /* Project object */;
+}
