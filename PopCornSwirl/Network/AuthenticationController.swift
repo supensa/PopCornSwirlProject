@@ -9,10 +9,8 @@
 import Foundation
 import Alamofire
 
-class AuthenticationController {
-  var token: String?
-  
-  func requestNewToken(username: String, password: String, completion: @escaping (Bool, String) -> Void) {
+class AuthenticationController {  
+  func requestNewToken(username: String, password: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newToken
     Alamofire.request(url, method: .get).responseJSON {
       (response) in
@@ -21,26 +19,27 @@ class AuthenticationController {
         self.processToken(username: username, password: password, data: data, completion: completion)
       } else {
         // Server Failed to answer
-        completion(false, "Server failed to answer")
+        completion(false, self.createError())
       }
     }
   }
   
-  func processToken(username:String, password: String, data: Data, completion: @escaping (Bool, String) -> Void) {
-    TokenParser().parse(from: data) {
-      (success, message) in
+  func processToken(username:String, password: String, data: Data, completion: @escaping (Bool, Decodable) -> Void) {
+    Parser().decode(Token.self, from: data) {
+      (success: Bool, decodable: Decodable) in
       if success {
         // Token Received
-        let token = message
-        self.validateToken(username: username, password: password, token: token, completion: completion)
+        let token = decodable as! Token
+        self.validateToken(username: username, password: password, token: token.requestToken, completion: completion)
       } else {
         // Error Message
-        completion(false, message)
+        let error = decodable as! Error
+        completion(false, error)
       }
     }
   }
   
-  func validateToken(username: String, password: String, token: String, completion: @escaping (Bool, String) -> Void) {
+  func validateToken(username: String, password: String, token: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.login
     
     let parameters = [
@@ -56,51 +55,36 @@ class AuthenticationController {
         self.processTokenValidation(data: data, completion: completion)
       } else {
         // Server Failed to answer
-        completion(false, "Server failed to answer")
+        completion(false, self.createError())
       }
     }
   }
   
-  func processTokenValidation(data: Data, completion: @escaping (Bool, String) -> Void) {
-    TokenParser().parse(from: data) {
-      (success, message) in
+  func processTokenValidation(data: Data, completion: @escaping (Bool, Decodable) -> Void) {
+    Parser().decode(Token.self, from: data) {
+      (success: Bool, decodable: Decodable) in
       if success {
         // Token
-        let token = message
-        self.requestSessionId(token: token, completion: completion)
+        let token = decodable as! Token
+        self.requestSessionId(token: token.requestToken, completion: completion)
       } else {
         // Error Message
-        completion(false, message)
+        let error = decodable as! Error
+        completion(false, error)
       }
     }
   }
   
-  func requestSessionId(token: String, completion: @escaping (Bool, String) -> Void) {
+  func requestSessionId(token: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newSession
     let parameters = ["request_token": token]
     Alamofire.request(url, method: .post, parameters: parameters).responseJSON {
       (response) in
-      if response.result.isSuccess, let data = response.data {
-        // success
-        self.processSessionId(data: data, completion: completion)
-      } else {
-        // Server Failed to answer
-        completion(false, "Server failed to answer")
-      }
+      NetworkController.process(response: response, type: Session.self, completion: completion)
     }
   }
   
-  func processSessionId(data: Data, completion: @escaping (Bool, String) -> Void) {
-    SessionIdParser().parse(from: data) {
-      (success, message) in
-      if success {
-        // SessionId
-        let sessionId = message
-        completion(true, sessionId)
-      } else {
-        // Error Message
-        completion(false, message)
-      }
-    }
+  func createError() -> Error {
+    return Error(id: nil, statusMessage: "Server failed to answer")
   }
 }

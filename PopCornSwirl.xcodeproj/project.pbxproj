@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		596D65F921B776BA00C144BD /* API+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D65F821B776BA00C144BD /* API+Ext.swift */; };
+		596D65FB21B784F300C144BD /* genre.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596D65FA21B784F300C144BD /* genre.storyboard */; };
+		596D65FF21B7926500C144BD /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D65FE21B7926500C144BD /* Parser.swift */; };
+		596D660121B7B88D00C144BD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D660021B7B88D00C144BD /* Error.swift */; };
+		596D660321B7B8B800C144BD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D660221B7B8B800C144BD /* Session.swift */; };
+		596D660521B7B94D00C144BD /* GenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D660421B7B94D00C144BD /* GenreList.swift */; };
+		596D660721B7B95B00C144BD /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D660621B7B95B00C144BD /* Genre.swift */; };
+		598EAA3421B8E7550098C36E /* GenresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EAA3321B8E7550098C36E /* GenresController.swift */; };
+		598EAA3621B8E8A20098C36E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EAA3521B8E8A20098C36E /* TabBarController.swift */; };
 		59B3799121AFA70B00956BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B3799021AFA70B00956BF3 /* AppDelegate.swift */; };
 		59B3799321AFA70B00956BF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B3799221AFA70B00956BF3 /* LoginViewController.swift */; };
 		59B3799621AFA70B00956BF3 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59B3799421AFA70B00956BF3 /* login.storyboard */; };
@@ -16,16 +24,28 @@
 		59BB2D1721B4DDB300B13ADD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */; };
 		59BB2D1921B4FA7500B13ADD /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */; };
 		59BB2D1B21B4FAB300B13ADD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1A21B4FAB300B13ADD /* API.swift */; };
-		59BB2D1D21B5016900B13ADD /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1C21B5016900B13ADD /* TokenParser.swift */; };
-		59BB2D1F21B5128700B13ADD /* SessionIdParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */; };
-		59EAAFAA21B331C000836C17 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59EAAFA921B331C000836C17 /* main.storyboard */; };
-		59FFB6C021B74FD700632C35 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */; };
+		59D37E8B21BA199D003B1ACC /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E8A21BA199D003B1ACC /* MovieViewController.swift */; };
+		59D37E8D21BA387D003B1ACC /* MoviePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E8C21BA387D003B1ACC /* MoviePage.swift */; };
+		59D37E8F21BA38CE003B1ACC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E8E21BA38CE003B1ACC /* Movie.swift */; };
+		59D37E9121BA3B3F003B1ACC /* MoviePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E9021BA3B3F003B1ACC /* MoviePageController.swift */; };
+		59D37E9521BA4E16003B1ACC /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E9421BA4E16003B1ACC /* Token.swift */; };
+		59D37E9721BA50A8003B1ACC /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D37E9621BA50A8003B1ACC /* NetworkController.swift */; };
+		59EAAFAA21B331C000836C17 /* tabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59EAAFA921B331C000836C17 /* tabBar.storyboard */; };
+		59FFB6C021B74FD700632C35 /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFB6BF21B74FD700632C35 /* GenreViewController.swift */; };
 		BABE00E3B198C6042237A71C /* Pods_PopCornSwirl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D16E8E5A096CB27F7820F70 /* Pods_PopCornSwirl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D16E8E5A096CB27F7820F70 /* Pods_PopCornSwirl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopCornSwirl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		596D65F821B776BA00C144BD /* API+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Ext.swift"; sourceTree = "<group>"; };
+		596D65FA21B784F300C144BD /* genre.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = genre.storyboard; sourceTree = "<group>"; };
+		596D65FE21B7926500C144BD /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		596D660021B7B88D00C144BD /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		596D660221B7B8B800C144BD /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		596D660421B7B94D00C144BD /* GenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreList.swift; sourceTree = "<group>"; };
+		596D660621B7B95B00C144BD /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		598EAA3321B8E7550098C36E /* GenresController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresController.swift; sourceTree = "<group>"; };
+		598EAA3521B8E8A20098C36E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		59B3798D21AFA70B00956BF3 /* PopCornSwirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopCornSwirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B3799021AFA70B00956BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59B3799221AFA70B00956BF3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -36,10 +56,14 @@
 		59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		59BB2D1A21B4FAB300B13ADD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		59BB2D1C21B5016900B13ADD /* TokenParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
-		59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIdParser.swift; sourceTree = "<group>"; };
-		59EAAFA921B331C000836C17 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
-		59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		59D37E8A21BA199D003B1ACC /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		59D37E8C21BA387D003B1ACC /* MoviePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePage.swift; sourceTree = "<group>"; };
+		59D37E8E21BA38CE003B1ACC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		59D37E9021BA3B3F003B1ACC /* MoviePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageController.swift; sourceTree = "<group>"; };
+		59D37E9421BA4E16003B1ACC /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		59D37E9621BA50A8003B1ACC /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		59EAAFA921B331C000836C17 /* tabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tabBar.storyboard; sourceTree = "<group>"; };
+		59FFB6BF21B74FD700632C35 /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		6680E7FF07EE41068BC766E1 /* Pods-PopCornSwirl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopCornSwirl.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl.release.xcconfig"; sourceTree = "<group>"; };
 		9C93E1B68A2932FCDD8A085A /* Pods-PopCornSwirl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopCornSwirl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopCornSwirl/Pods-PopCornSwirl.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,8 +115,11 @@
 			children = (
 				59BB2D1A21B4FAB300B13ADD /* API.swift */,
 				596D65F821B776BA00C144BD /* API+Ext.swift */,
+				59D37E9621BA50A8003B1ACC /* NetworkController.swift */,
 				59BB2D1821B4FA7500B13ADD /* AuthenticationController.swift */,
-				59FFB6C121B767AD00632C35 /* Parser */,
+				598EAA3321B8E7550098C36E /* GenresController.swift */,
+				59D37E9021BA3B3F003B1ACC /* MoviePageController.swift */,
+				596D65FE21B7926500C144BD /* Parser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -103,7 +130,9 @@
 				59B3799021AFA70B00956BF3 /* AppDelegate.swift */,
 				59B3799221AFA70B00956BF3 /* LoginViewController.swift */,
 				59BB2D1621B4DDB300B13ADD /* LoadingViewController.swift */,
-				59FFB6BF21B74FD700632C35 /* WelcomeViewController.swift */,
+				598EAA3521B8E8A20098C36E /* TabBarController.swift */,
+				59FFB6BF21B74FD700632C35 /* GenreViewController.swift */,
+				59D37E8A21BA199D003B1ACC /* MovieViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,7 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				59B3799421AFA70B00956BF3 /* login.storyboard */,
-				59EAAFA921B331C000836C17 /* main.storyboard */,
+				59EAAFA921B331C000836C17 /* tabBar.storyboard */,
+				596D65FA21B784F300C144BD /* genre.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +150,13 @@
 		59EAAFA721B32CCB00836C17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				596D660021B7B88D00C144BD /* Error.swift */,
+				59D37E9421BA4E16003B1ACC /* Token.swift */,
+				596D660221B7B8B800C144BD /* Session.swift */,
+				596D660421B7B94D00C144BD /* GenreList.swift */,
+				596D660621B7B95B00C144BD /* Genre.swift */,
+				59D37E8C21BA387D003B1ACC /* MoviePage.swift */,
+				59D37E8E21BA38CE003B1ACC /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -132,15 +169,6 @@
 				59B3799C21AFA70D00956BF3 /* Info.plist */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		59FFB6C121B767AD00632C35 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				59BB2D1C21B5016900B13ADD /* TokenParser.swift */,
-				59BB2D1E21B5128700B13ADD /* SessionIdParser.swift */,
-			);
-			name = Parser;
 			sourceTree = "<group>";
 		};
 		695BD1EE87CFBA2DD15CB934 /* Pods */ = {
@@ -220,10 +248,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596D65FB21B784F300C144BD /* genre.storyboard in Resources */,
 				59B3799B21AFA70D00956BF3 /* LaunchScreen.storyboard in Resources */,
 				59B3799821AFA70D00956BF3 /* Assets.xcassets in Resources */,
 				59B3799621AFA70B00956BF3 /* login.storyboard in Resources */,
-				59EAAFAA21B331C000836C17 /* main.storyboard in Resources */,
+				59EAAFAA21B331C000836C17 /* tabBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,15 +310,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59BB2D1D21B5016900B13ADD /* TokenParser.swift in Sources */,
-				59FFB6C021B74FD700632C35 /* WelcomeViewController.swift in Sources */,
+				59D37E9721BA50A8003B1ACC /* NetworkController.swift in Sources */,
+				59D37E9121BA3B3F003B1ACC /* MoviePageController.swift in Sources */,
+				596D65FF21B7926500C144BD /* Parser.swift in Sources */,
+				59FFB6C021B74FD700632C35 /* GenreViewController.swift in Sources */,
 				596D65F921B776BA00C144BD /* API+Ext.swift in Sources */,
+				596D660121B7B88D00C144BD /* Error.swift in Sources */,
+				59D37E8B21BA199D003B1ACC /* MovieViewController.swift in Sources */,
 				59B3799321AFA70B00956BF3 /* LoginViewController.swift in Sources */,
+				598EAA3621B8E8A20098C36E /* TabBarController.swift in Sources */,
+				596D660521B7B94D00C144BD /* GenreList.swift in Sources */,
+				596D660321B7B8B800C144BD /* Session.swift in Sources */,
+				598EAA3421B8E7550098C36E /* GenresController.swift in Sources */,
+				596D660721B7B95B00C144BD /* Genre.swift in Sources */,
+				59D37E8D21BA387D003B1ACC /* MoviePage.swift in Sources */,
+				59D37E8F21BA38CE003B1ACC /* Movie.swift in Sources */,
 				59BB2D1921B4FA7500B13ADD /* AuthenticationController.swift in Sources */,
 				59B3799121AFA70B00956BF3 /* AppDelegate.swift in Sources */,
+				59D37E9521BA4E16003B1ACC /* Token.swift in Sources */,
 				59BB2D1721B4DDB300B13ADD /* LoadingViewController.swift in Sources */,
 				59BB2D1B21B4FAB300B13ADD /* API.swift in Sources */,
-				59BB2D1F21B5128700B13ADD /* SessionIdParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,15 +23,16 @@ class LoadingViewController: UIViewController {
     self.messageLabel.adjustsFontSizeToFitWidth = true
     
     AuthenticationController().requestNewToken(username: username!, password: password!) {
-      (success, result) in
+      (success: Bool, decodable: Decodable) in
       if success {
-        let sessionId = result
-        self.presentWelcomViewController(sessionId: sessionId)
+        let session = decodable as! Session
+        self.presentGenreViewController(session: session)
       } else {
         // Print error message
         // Enable back button
         DispatchQueue.main.async {
-          self.messageLabel.text = result
+          let error = decodable as! Error
+          self.messageLabel.text = error.statusMessage
           self.backButton.isEnabled = true
         }
       }
@@ -42,11 +43,16 @@ class LoadingViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
   
-  func presentWelcomViewController(sessionId: String) {
-    let storyboard = UIStoryboard.init(name: "main", bundle: nil)
-    let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
-      as! WelcomeViewController
-    welcomeViewController.sessionId = sessionId
-    self.present(welcomeViewController, animated: true, completion: nil)
+  func presentGenreViewController(session: Session) {
+    let storyboard = UIStoryboard.init(name: "tabBar", bundle: nil)
+    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+      as! TabBarController
+    if let navigationController = tabBarController.viewControllers?.first as? UINavigationController,
+      let _ = navigationController.viewControllers.first as? GenreViewController {
+      // Dependency injection for session id
+      tabBarController.sessionId = session.id
+      // Present tabBarController
+      self.present(tabBarController, animated: true, completion: nil)
+    }
   }
 }
