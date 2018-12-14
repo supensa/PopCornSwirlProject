@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// Properties name needs to be the same as data received in JSON
 struct MoviePage: Decodable {
   var page: Int?
   var totalResults: Int?

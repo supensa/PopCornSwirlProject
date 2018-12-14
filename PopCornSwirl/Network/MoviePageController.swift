@@ -16,12 +16,13 @@ class MoviePageController {
       "api_key": API.key,
       "with_genres": genreIndex,
       "page": page,
+      "sort_by": "release_date.desc",
       "include_adult": false,
       "language": "US-EN"
     ]
     Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
       .responseJSON {
-        (response) in
+        (response: DataResponse<Any>) in
         NetworkController.process(response: response, type: MoviePage.self, completion: completion)
     }
   }

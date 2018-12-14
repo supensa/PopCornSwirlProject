@@ -28,7 +28,7 @@ class NetworkController {
       }
   }
   
-  /// Process response. Return decodable object of type T or of type Error.
+  /// Process response. Return in closure decodable object of type T or of type Error.
   ///
   /// - Parameters:
   ///   - response: Alamofire response

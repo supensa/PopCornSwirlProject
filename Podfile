@@ -6,6 +6,7 @@ target 'PopCornSwirl' do
   use_frameworks!
 
   # Pods for PopCornSwirl
-  pod 'Alamofire' 
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 
 end

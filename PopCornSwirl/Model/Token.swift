@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// Properties name needs to be the same as data received in JSON
 struct Token: Decodable {
   let success: Bool
   let expiresAt: String

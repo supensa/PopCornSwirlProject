@@ -33,7 +33,6 @@ class GenreViewController: UIViewController {
   }
   
   func setupDelegation() {
-    self.tableView.delegate = self
     self.tableView.dataSource = self
   }
   
@@ -51,12 +50,7 @@ class GenreViewController: UIViewController {
   }
 }
 
-
-extension GenreViewController: UITableViewDelegate {
-  
-}
-
-
+// MARK: --> UITableView Datasource
 extension GenreViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.genreList.genres.count
@@ -69,6 +63,7 @@ extension GenreViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
     let genre = genreList.genres[indexPath.row]
+    cell.textLabel?.adjustsFontSizeToFitWidth = true
     cell.textLabel?.text = genre.name
     return cell
   }

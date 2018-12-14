@@ -79,7 +79,7 @@ class AuthenticationController {
     let url = API.newSession
     let parameters = ["request_token": token]
     Alamofire.request(url, method: .post, parameters: parameters).responseJSON {
-      (response) in
+      (response: DataResponse<Any>) in
       NetworkController.process(response: response, type: Session.self, completion: completion)
     }
   }
