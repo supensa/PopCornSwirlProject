@@ -22,7 +22,7 @@ class NetworkController {
           let oject = decodable as! T
           completion(success, oject)
         } else {
-          let error = decodable as! Error
+          let error = decodable as! Response
           completion(success, error)
         }
       }
@@ -32,8 +32,8 @@ class NetworkController {
   ///
   /// - Parameters:
   ///   - response: Alamofire response
-  ///   - type: type of decodable object to parse from JSON
-  ///   - completion: return decodable object of type T or error
+  ///   - type: Decodable type object to parse from JSON
+  ///   - completion: return Decodable object of type T or error
   ///   - success: true if received an answer from server
   ///   - decodable: object decoded from JSON
   static func process<T>(response: DataResponse<Any>,
@@ -44,7 +44,7 @@ class NetworkController {
       NetworkController.process(data: data, type: T.self, completion: completion)
     } else {
       // Server Failed to answer
-      completion(false, Error(id: nil, statusMessage: "Server failed to answer"))
+      completion(false, Response(id: nil, statusMessage: "Server failed to answer"))
     }
   }
 }

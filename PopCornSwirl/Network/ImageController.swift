@@ -11,7 +11,7 @@ import Alamofire
 import AlamofireImage
 
 class ImageController {  
-  func imageFrom(relativePath: String, completion: @escaping (UIImage)->()) {
+  func downloadFrom(relativePath: String, completion: @escaping (UIImage)->()) {
     let url = "https://image.tmdb.org/t/p/w185" + relativePath
     Alamofire.request(url).responseImage {
       (response: DataResponse<Image>) in

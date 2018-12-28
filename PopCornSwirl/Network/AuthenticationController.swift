@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class AuthenticationController {  
-  func requestNewToken(username: String, password: String, completion: @escaping (Bool, Decodable) -> Void) {
+  func sendRequest(username: String, password: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newToken
     Alamofire.request(url, method: .get).responseJSON {
       (response) in
@@ -33,7 +33,7 @@ class AuthenticationController {
         self.validateToken(username: username, password: password, token: token.requestToken, completion: completion)
       } else {
         // Error Message
-        let error = decodable as! Error
+        let error = decodable as! Response
         completion(false, error)
       }
     }
@@ -69,7 +69,7 @@ class AuthenticationController {
         self.requestSessionId(token: token.requestToken, completion: completion)
       } else {
         // Error Message
-        let error = decodable as! Error
+        let error = decodable as! Response
         completion(false, error)
       }
     }
@@ -84,7 +84,7 @@ class AuthenticationController {
     }
   }
   
-  func createError() -> Error {
-    return Error(id: nil, statusMessage: "Server failed to answer")
+  func createError() -> Response {
+    return Response(id: nil, statusMessage: "Server failed to answer")
   }
 }

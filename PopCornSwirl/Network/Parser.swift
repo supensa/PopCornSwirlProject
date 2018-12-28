@@ -14,7 +14,7 @@ class Parser {
   /// - Parameters:
   ///   - type: Type that conform to Decodable protocol
   ///   - data: Data from network request in JSON
-  ///   - completion: return Decodable object (T.Type or Error.Type)
+  ///   - completion: return Decodable object (T.Type or Response.Type)
   func decode<T>(_ type: T.Type, from data: Data, completion: @escaping (Bool, Decodable) -> Void) where T : Decodable {
     do {
       let decoder = JSONDecoder()
@@ -26,19 +26,19 @@ class Parser {
     }
   }
   
-  /// Decode JSON into Error object
+  /// Decode JSON into Response object
   ///
   /// - Parameters:
   ///   - data: data to parse JSON format
-  ///   - completion: return Error.Type object
+  ///   - completion: return Response.Type object
   func decodeError(from data: Data, completion: @escaping (Bool, Decodable) -> Void) {
     do {
       let decoder = JSONDecoder()
       decoder.keyDecodingStrategy = .convertFromSnakeCase
-      let error = try decoder.decode(Error.self, from: data)
+      let error = try decoder.decode(Response.self, from: data)
       completion(false, error)
     } catch {
-      let error = Error(id: nil, statusMessage: "Server failed to answer")
+      let error = Response(id: nil, statusMessage: "Server failed to answer")
       completion(false, error)
     }
   }

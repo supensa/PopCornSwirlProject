@@ -8,48 +8,74 @@
 
 import UIKit
 
+protocol MovieDelegate {
+  func requestDataFromNetwork(page:Int,
+                              completion: @escaping (Bool, Decodable) -> ())
+}
+
 class MovieViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
   
-  var currentGenreIndex: Int!
-  var genreList: GenreList!
+  var delegate: MovieDelegate!
   
   var movies = [Movie]()
   var currentPage = 0
   var totalPages = 0
-  
-  var currentGenre: Genre {
-    return genreList.genres[currentGenreIndex]
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
     self.collectionViewFlowLayout.scrollDirection = .vertical
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     self.loadMovies()
   }
   
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.resetData()
+    self.collectionView.reloadData()
+  }
+  
   func loadMovies(page: Int = 1) {
-    let genreIndex = currentGenre.id
-    MoviePageController().requestMovie(page: page, genreIndex: genreIndex) {
+    self.delegate.requestDataFromNetwork(page: page) {
       (success, decodable) in
       if success {
-        let moviePage = decodable as! MoviePage
-        let movies = moviePage.results ?? []
-        self.movies.append(contentsOf: movies)
-        self.currentPage = moviePage.page ?? 0
-        self.totalPages = moviePage.totalPages ?? 0
+        let moviePage = decodable as! Page
+        let results = moviePage.results
+        self.movies.append(contentsOf: results)
+        self.currentPage = moviePage.number
+        self.totalPages = moviePage.total
         DispatchQueue.main.async {
           self.collectionView.reloadData()
         }
       } else {
-        let error = decodable as! Error
+        let error = decodable as! Response
         // TODO: UIAlertControler
         print(error.statusMessage)
       }
+    }
+  }
+  
+  func resetData() {
+    self.movies = [Movie]()
+    self.currentPage = 0
+    self.totalPages = 0
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let cell = sender as? CollectionViewCell,
+      segue.identifier == "MovieDetailSegue",
+      let indexPath = self.collectionView.indexPath(for: cell) {
+      let row = indexPath.row
+      let movie = self.movies[row]
+      let viewController = segue.destination as! MovieDetailViewController
+      viewController.movie = movie
     }
   }
 }
@@ -59,23 +85,19 @@ extension MovieViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
-    let w = collectionView.frame.size.width
-    return CGSize(width: (w - 20)/2, height: 290)
+    return CGSize(width: 185 * 0.75, height: 250 * 0.75)
   }
   
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    
-    return 20
+    return 10
   }
   
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    
-    return 30
+    return 10
   }
 }
 
@@ -102,7 +124,7 @@ extension MovieViewController: UICollectionViewDataSource {
     return cell
   }
   
-  /// Check if more movies and load then
+  /// Check if there are more movies and load then
   func loadMoreMovies() {
     guard self.totalPages > 0 else { return }
     if self.currentPage < self.totalPages {
@@ -114,14 +136,14 @@ extension MovieViewController: UICollectionViewDataSource {
   func setImage(indexPath: IndexPath, cell: CollectionViewCell) {
     self.resetPoster(cell: cell)
     let index = indexPath.row
-    guard let id = self.movies[index].id else { return }
+    let id = self.movies[index].id
     
     if let image = MovieImage.poster[id] {
       // Image already in memory
       cell.setImage(image: image)
     } else if let path = self.movies[index].posterPath {
       // Call for network to download image into memory and set it
-      ImageController().imageFrom(relativePath: path) {
+      ImageController().downloadFrom(relativePath: path) {
         (image) in
         DispatchQueue.main.async {
           // Put image in memory

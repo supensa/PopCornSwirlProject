@@ -1,5 +1,5 @@
 //
-//  Error.swift
+//  Response.swift
 //  PopCornSwirl
 //
 //  Created by Spencer Forrest on 05/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 // Properties name needs to be the same as data received in JSON
-struct Error: Decodable {
+struct Response: Decodable {
   let id: Int?
   let statusMessage: String
   // Change properties name here if needed

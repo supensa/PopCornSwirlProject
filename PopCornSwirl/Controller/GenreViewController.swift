@@ -16,7 +16,7 @@ class GenreViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupDelegation()
-    GenresController().requestGenreList {
+    GenreListController().sendRequest() {
       (success: Bool, decodable: Decodable) in
       if success {
         DispatchQueue.main.async {
@@ -26,7 +26,7 @@ class GenreViewController: UIViewController {
         }
       } else {
         // TODO: Handle Error create UIAlert
-        let error = decodable as! Error
+        let error = decodable as! Response
         print(error.statusMessage)
       }
     }
@@ -40,12 +40,28 @@ class GenreViewController: UIViewController {
     if let identifier = segue.identifier,
       let cell = sender as? UITableViewCell,
       let indexpath = tableView.indexPath(for: cell),
-      identifier == "MovieListSegue" {
+      identifier == "MovieSegue" {
       // Send all genre and selected genre index to Movie view Controller
       let row = indexpath.row
       let viewController = segue.destination as! MovieViewController
-      viewController.currentGenreIndex = row
-      viewController.genreList = self.genreList
+      let genreId = self.genreList.genres[row].id
+      viewController.delegate = MovieDelegation(genreId: genreId)
+    }
+  }
+  
+  private class MovieDelegation: MovieDelegate {
+    private var genreId: Int
+    
+    init(genreId: Int) {
+      self.genreId = genreId
+    }
+    
+    func requestDataFromNetwork(page: Int,
+                                completion: @escaping (Bool, Decodable) -> ()) {
+      MoviePageController().sendRequest(page: page, genreId: self.genreId) {
+        (success, decodable) in
+        completion(success, decodable)
+      }
     }
   }
 }

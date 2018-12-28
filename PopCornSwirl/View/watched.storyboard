@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8B1-4a-nsF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Watched list-->
+        <scene sceneID="c3Y-rp-0sz">
+            <objects>
+                <navigationController title="Watched list" automaticallyAdjustsScrollViewInsets="NO" id="8B1-4a-nsF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Watched" id="N04-QF-IoV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wja-D1-MLI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a3Q-aa-v43" kind="relationship" relationship="rootViewController" id="kbj-lJ-1Wk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AuX-Ql-dsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="884"/>
+        </scene>
+        <!--movie-->
+        <scene sceneID="Gg2-YY-otW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="movie" id="a3Q-aa-v43" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6es-Q4-i0p"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Odz-sP-Way" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1515" y="883"/>
+        </scene>
+    </scenes>
+</document>

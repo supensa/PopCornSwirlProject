@@ -22,7 +22,7 @@ class LoadingViewController: UIViewController {
     self.backButton.isEnabled = false
     self.messageLabel.adjustsFontSizeToFitWidth = true
     
-    AuthenticationController().requestNewToken(username: username!, password: password!) {
+    AuthenticationController().sendRequest(username: username!, password: password!) {
       (success: Bool, decodable: Decodable) in
       if success {
         let session = decodable as! Session
@@ -31,7 +31,7 @@ class LoadingViewController: UIViewController {
         // Print error message
         // Enable back button
         DispatchQueue.main.async {
-          let error = decodable as! Error
+          let error = decodable as! Response
           self.messageLabel.text = error.statusMessage
           self.backButton.isEnabled = true
         }

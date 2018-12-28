@@ -1,5 +1,5 @@
 //
-//  GenresController.swift
+//  GenreListController.swift
 //  PopCornSwirl
 //
 //  Created by Spencer Forrest on 06/12/2018.
@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 
-class GenresController {
-  func requestGenreList(completion: @escaping (Bool, Decodable) -> Void) {
+class GenreListController {
+  func sendRequest(completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.genreList
     Alamofire.request(url, method: .get).responseJSON {
       (response: DataResponse<Any>) in

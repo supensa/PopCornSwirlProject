@@ -20,4 +20,11 @@ struct API {
   static let endSession = API.domain + "authentication/session?api_key=" + API.key
   static let genreList = API.domain + "genre/movie/list?language=en-US&api_key=" + API.key
   static let moviePage = API.domain + "discover/movie"
+  static let movie = API.domain + "movie/"
+  static let favoritePage = API.domain + "account/account_id/favorite/movies"
+  static let watchedListPage = API.domain + "account/account_id/watchlist/movies"
+  static let isFavorite = API.domain + "account/account_id/favorite?api_key=" + API.key
+    + "&session_id="
+  static let isWatched = API.domain + "account/account_id/watchlist?api_key=" + API.key
+    + "&session_id="
 }

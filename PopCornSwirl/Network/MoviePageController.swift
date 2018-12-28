@@ -10,20 +10,20 @@ import Foundation
 import Alamofire
 
 class MoviePageController {
-  func requestMovie(page:Int = 1, genreIndex: Int, completion: @escaping (Bool, Decodable) -> Void) {
+  func sendRequest(page:Int = 1, genreId: Int, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.moviePage
     let parameters: [String: Any] = [
       "api_key": API.key,
-      "with_genres": genreIndex,
+      "with_genres": genreId,
       "page": page,
-      "sort_by": "release_date.desc",
-      "include_adult": false,
-      "language": "US-EN"
+      "sort_by": "popularity.desc",
+      "include_adult": "false",
+      "language": "EN-US"
     ]
     Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
       .responseJSON {
         (response: DataResponse<Any>) in
-        NetworkController.process(response: response, type: MoviePage.self, completion: completion)
+        NetworkController.process(response: response, type: Page.self, completion: completion)
     }
   }
 }
