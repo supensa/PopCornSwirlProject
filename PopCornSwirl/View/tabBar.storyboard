@@ -53,11 +53,14 @@
         <scene sceneID="oVP-23-0Kh">
             <objects>
                 <viewControllerPlaceholder storyboardName="watched" id="cMl-A1-X2G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watched" id="5dl-mi-QwD"/>
+                    <tabBarItem key="tabBarItem" title="Watched" selectedImage="eye" id="5dl-mi-QwD"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lD-qC-rAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="218" y="572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eye" width="31" height="23"/>
+    </resources>
 </document>

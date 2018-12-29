@@ -8,5 +8,6 @@ target 'PopCornSwirl' do
   # Pods for PopCornSwirl
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'Google-Mobile-Ads-SDK'
 
 end

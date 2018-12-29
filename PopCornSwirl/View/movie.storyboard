@@ -22,7 +22,7 @@
                                 <rect key="frame" x="112.5" y="20" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7g2-po-Q28" secondAttribute="height" multiplier="1:1" id="faH-JO-S13"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="tAc-nk-AAb"/>
+                                    <constraint firstAttribute="height" constant="150" id="tAc-nk-AAb"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-F3-kAO">
@@ -31,7 +31,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zf-vn-i3t">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zf-vn-i3t" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -98,6 +98,7 @@
                         <viewLayoutGuide key="safeArea" id="xrR-1v-30Z"/>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="1zf-vn-i3t" id="DXC-zZ-mDC"/>
                         <outlet property="favoriteButton" destination="5Y0-mo-G5M" id="waI-1S-ByD"/>
                         <outlet property="overviewTextView" destination="E1b-Q2-lct" id="Cvm-UP-le1"/>
                         <outlet property="poster" destination="7g2-po-Q28" id="eDv-hM-Dup"/>
@@ -118,7 +119,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-lp-r9W">
-                                <rect key="frame" x="16" y="20" width="343" height="587"/>
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="diK-C1-Tyj">
                                     <size key="itemSize" width="164" height="208"/>
@@ -166,31 +167,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeh-qY-mIV">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" red="0.39607843139999999" green="0.83921568629999999" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouZ-wW-xcl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAITING..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3X-JJ-CR3">
+                                        <rect key="frame" x="144" y="311.5" width="87.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="evk-CX-1uf">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="180"/>
-                                    </constraint>
+                                    <constraint firstItem="t3X-JJ-CR3" firstAttribute="centerX" secondItem="ouZ-wW-xcl" secondAttribute="centerX" id="2yq-L4-NxI"/>
+                                    <constraint firstItem="t3X-JJ-CR3" firstAttribute="centerY" secondItem="ouZ-wW-xcl" secondAttribute="centerY" id="6SY-6C-656"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zeh-qY-mIV" firstAttribute="bottom" secondItem="rbK-uC-VJP" secondAttribute="bottom" id="3s3-Kr-eWv"/>
-                            <constraint firstItem="zeh-qY-mIV" firstAttribute="trailing" secondItem="rbK-uC-VJP" secondAttribute="trailing" id="C46-m2-A1Q"/>
-                            <constraint firstItem="zeh-qY-mIV" firstAttribute="leading" secondItem="rbK-uC-VJP" secondAttribute="leading" id="VtO-hb-dF0"/>
-                            <constraint firstItem="zeh-qY-mIV" firstAttribute="top" secondItem="IeT-lp-r9W" secondAttribute="bottom" id="bHf-ui-tRU"/>
+                            <constraint firstItem="rbK-uC-VJP" firstAttribute="trailing" secondItem="ouZ-wW-xcl" secondAttribute="trailing" id="CQF-nD-IXf"/>
+                            <constraint firstItem="rbK-uC-VJP" firstAttribute="bottom" secondItem="ouZ-wW-xcl" secondAttribute="bottom" id="OYN-TL-mmd"/>
                             <constraint firstItem="IeT-lp-r9W" firstAttribute="trailing" secondItem="rbK-uC-VJP" secondAttribute="trailing" constant="-16" id="ewh-Kj-emM"/>
+                            <constraint firstItem="ouZ-wW-xcl" firstAttribute="leading" secondItem="rbK-uC-VJP" secondAttribute="leading" id="kbp-Wh-2ZI"/>
                             <constraint firstItem="IeT-lp-r9W" firstAttribute="leading" secondItem="rbK-uC-VJP" secondAttribute="leading" constant="16" id="kim-hv-Ko4"/>
                             <constraint firstItem="IeT-lp-r9W" firstAttribute="top" secondItem="rbK-uC-VJP" secondAttribute="top" id="oPj-5v-Khr"/>
+                            <constraint firstItem="rbK-uC-VJP" firstAttribute="bottom" secondItem="IeT-lp-r9W" secondAttribute="bottom" id="prU-Gg-EGe"/>
+                            <constraint firstItem="ouZ-wW-xcl" firstAttribute="top" secondItem="rbK-uC-VJP" secondAttribute="top" id="tHW-ed-ieU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rbK-uC-VJP"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="IeT-lp-r9W" id="BQc-jk-qUe"/>
                         <outlet property="collectionViewFlowLayout" destination="diK-C1-Tyj" id="X49-Px-uRE"/>
+                        <outlet property="waitingView" destination="ouZ-wW-xcl" id="Fyw-Sx-FdZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNv-Df-cMf" userLabel="First Responder" sceneMemberID="firstResponder"/>

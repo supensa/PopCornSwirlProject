@@ -15,9 +15,10 @@ protocol MovieDelegate {
 
 class MovieViewController: UIViewController {
   
+  @IBOutlet weak var waitingView: UIView!
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
-  
+    
   var delegate: MovieDelegate!
   
   var movies = [Movie]()
@@ -38,6 +39,7 @@ class MovieViewController: UIViewController {
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
+    self.waitingView.isHidden = false
     self.resetData()
     self.collectionView.reloadData()
   }
@@ -53,6 +55,7 @@ class MovieViewController: UIViewController {
         self.totalPages = moviePage.total
         DispatchQueue.main.async {
           self.collectionView.reloadData()
+          self.waitingView.isHidden = true
         }
       } else {
         let error = decodable as! Response

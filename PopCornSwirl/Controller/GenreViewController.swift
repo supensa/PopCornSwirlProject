@@ -10,6 +10,7 @@ import UIKit
 
 class GenreViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var waitingView: UIView!
   
   var genreList = GenreList(genres: [Genre]())
   
@@ -23,6 +24,7 @@ class GenreViewController: UIViewController {
           let genres = decodable as! GenreList
           self.genreList = genres
           self.tableView.reloadData()
+          self.waitingView.isHidden = true
         }
       } else {
         // TODO: Handle Error create UIAlert

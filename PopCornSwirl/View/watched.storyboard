@@ -13,7 +13,7 @@
         <scene sceneID="c3Y-rp-0sz">
             <objects>
                 <navigationController title="Watched list" automaticallyAdjustsScrollViewInsets="NO" id="8B1-4a-nsF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watched" id="N04-QF-IoV"/>
+                    <tabBarItem key="tabBarItem" title="Watched" image="eye" id="N04-QF-IoV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wja-D1-MLI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -39,4 +39,7 @@
             <point key="canvasLocation" x="1515" y="883"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eye" width="25" height="25"/>
+    </resources>
 </document>
