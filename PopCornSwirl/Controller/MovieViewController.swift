@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MovieDelegate {
+protocol MovieDelegate: class {
   func requestDataFromNetwork(page:Int,
                               completion: @escaping (Bool, Decodable) -> ())
 }
@@ -19,7 +19,7 @@ class MovieViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
-  var delegate: MovieDelegate!
+  weak var delegate: MovieDelegate!
   
   var movies = [Movie]()
   var currentPage = 0
