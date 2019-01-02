@@ -13,7 +13,7 @@ import AlamofireImage
 class ImageController {  
   func downloadFrom(relativePath: String, completion: @escaping (UIImage)->()) {
     let url = "https://image.tmdb.org/t/p/w185" + relativePath
-    Alamofire.request(url).responseImage {
+    NetworkController.alamofire.request(url).responseImage {
       (response: DataResponse<Image>) in
       if let image = response.result.value {
         completion(image)

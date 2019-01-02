@@ -9,10 +9,12 @@
 import Foundation
 import Alamofire
 
+
 class AuthenticationController {  
   func sendRequest(username: String, password: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newToken
-    Alamofire.request(url, method: .get).responseJSON {
+    
+    NetworkController.alamofire.request(url, method: .get).responseJSON {
       (response) in
       if response.result.isSuccess, let data = response.data {
         // Success
@@ -48,7 +50,7 @@ class AuthenticationController {
       "request_token": token
     ]
     
-    Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
+    NetworkController.alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON {
       (response) in
       if response.result.isSuccess, let data = response.data {
         // Success
@@ -78,7 +80,7 @@ class AuthenticationController {
   func requestSessionId(token: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newSession
     let parameters = ["request_token": token]
-    Alamofire.request(url, method: .post, parameters: parameters).responseJSON {
+    NetworkController.alamofire.request(url, method: .post, parameters: parameters).responseJSON {
       (response: DataResponse<Any>) in
       NetworkController.process(response: response, type: Session.self, completion: completion)
     }

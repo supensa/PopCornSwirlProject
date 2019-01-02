@@ -21,7 +21,7 @@ class Watched {
         }
         let page = favoritePage.number
         let totalPages = favoritePage.total
-        // Request the next page until we have all the favorties Movie
+        // Request the next page until we have all the watched Movie
         if page < totalPages {
           self.loadList(sessionId: sessionId)
         }

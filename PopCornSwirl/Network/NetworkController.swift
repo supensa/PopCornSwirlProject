@@ -47,4 +47,10 @@ class NetworkController {
       completion(false, Response(id: nil, statusMessage: "Server failed to answer"))
     }
   }
+  
+  static var alamofire: SessionManager = {
+    let manager = Alamofire.SessionManager.default
+    manager.session.configuration.timeoutIntervalForRequest = 10
+    return manager
+  }()
 }

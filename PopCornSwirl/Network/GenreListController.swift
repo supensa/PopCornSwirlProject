@@ -13,7 +13,7 @@ import Alamofire
 class GenreListController {
   func sendRequest(completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.genreList
-    Alamofire.request(url, method: .get).responseJSON {
+    NetworkController.alamofire.request(url, method: .get).responseJSON {
       (response: DataResponse<Any>) in
       NetworkController.process(response: response, type: GenreList.self, completion: completion)
     }

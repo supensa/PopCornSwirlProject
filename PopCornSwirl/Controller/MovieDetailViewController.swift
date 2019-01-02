@@ -10,9 +10,6 @@ import UIKit
 import GoogleMobileAds
 
 class MovieDetailViewController: UIViewController {
-  
-  // TODO: Query API in case another tab updates Watched or Favorite list
-  
   @IBOutlet weak var poster: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var overviewTextView: UITextView!
@@ -34,29 +31,29 @@ class MovieDetailViewController: UIViewController {
     self.overviewTextView.text = self.movie.overview
     self.setupButtons()
     self.updateButtons()
-    self.setupBannerView()
+    self.setupGoogleBannerView()
+    
     NotificationCenter.default.addObserver(self,
-                                           selector: #selector(updateFavoriteButtons),
+                                           selector: #selector(updateFavoriteButton),
                                            name: Notification.Name("favoriteStatusChangeNotification"),
                                            object: nil)
     NotificationCenter.default.addObserver(self,
-                                           selector: #selector(updateWatchedListButtons),
+                                           selector: #selector(updateWatchedListButton),
                                            name: Notification.Name("watchedListStatusChangeNotification"),
                                            object: nil)
   }
   
-  func setupBannerView() {
+  func setupGoogleBannerView() {
     // Sample Ad unit ID for banner: ca-app-pub-3940256099942544/2934735716
     bannerView.adUnitID = API.adUnitID
     bannerView.rootViewController = self
     let request = GADRequest()
     request.tag(forChildDirectedTreatment: true)
-    request.keywords = ["goodies for movie", "\(self.movie.title)"]
     request.contentURL = "https://www.themoviedb.org/movie/\(self.movie.id)"
-    request.testDevices = ["01c976e7e77cf53732f9058e5b4644be"]
+    request.testDevices = [kGADSimulatorID]
     bannerView.load(request)
   }
-  
+    
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.overviewTextView.isScrollEnabled = true
@@ -70,11 +67,11 @@ class MovieDetailViewController: UIViewController {
   }
   
   func updateButtons() {
-    self.updateFavoriteButtons()
-    self.updateWatchedListButtons()
+    self.updateFavoriteButton()
+    self.updateWatchedListButton()
   }
   
-  @objc func updateFavoriteButtons() {
+  @objc func updateFavoriteButton() {
     self.favoriteButton.isUserInteractionEnabled = true
     let tabBar = self.navigationController?.tabBarController as! TabBarController
     if tabBar.favorite.isFavorite(movieId: self.movie.id) {
@@ -87,7 +84,7 @@ class MovieDetailViewController: UIViewController {
     self.favoriteButton.layoutIfNeeded()
   }
   
-  @objc func updateWatchedListButtons() {
+  @objc func updateWatchedListButton() {
     self.watchedListButton.isUserInteractionEnabled = true
     let tabBar = self.navigationController?.tabBarController as! TabBarController
     if tabBar.watchedList.isInWatchedList(movieId: self.movie.id) {
@@ -112,9 +109,14 @@ class MovieDetailViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name("favoriteStatusChangeNotification"),
                                         object: nil)
       } else {
-         // Handle NetWork Error
+         // Handle Network Error
         let error = decodable as! Response
         print(error.statusMessage)
+        DispatchQueue.main.async {
+          let alert = UIAlertController.serverAlert()
+          self.present(alert, animated: true, completion: nil)
+          self.updateFavoriteButton()
+        }
       }
     }
   }
@@ -131,9 +133,14 @@ class MovieDetailViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name("watchedListStatusChangeNotification"),
                                         object: nil)
       } else {
-        // Handle NetWork Error
+        // Handle Network Error
         let error = decodable as! Response
         print(error.statusMessage)
+        DispatchQueue.main.async {
+          let alert = UIAlertController.serverAlert()
+          self.present(alert, animated: true, completion: nil)
+          self.updateWatchedListButton()
+        }
       }
     }
   }

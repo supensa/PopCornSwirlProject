@@ -18,7 +18,7 @@ class WatchedListController {
       "sort_by": "created_at.desc",
       "page": page
     ]
-    Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+    NetworkController.alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
       .responseJSON {
         (response: DataResponse<Any>) in
         NetworkController.process(response: response, type: Page.self, completion: completion)
@@ -35,7 +35,7 @@ class WatchedListController {
       "media_id": movieId,
       "watchlist": boolean
     ]
-    Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+    NetworkController.alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
       .responseJSON {
         (response: DataResponse<Any>) in
         NetworkController.process(response: response, type: Response.self, completion: completion)

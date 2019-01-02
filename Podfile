@@ -9,5 +9,4 @@ target 'PopCornSwirl' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'Google-Mobile-Ads-SDK'
-  pod 'AmazonAd', '~> 2.2'
 end

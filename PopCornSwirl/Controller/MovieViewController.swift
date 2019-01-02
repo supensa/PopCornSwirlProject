@@ -19,7 +19,7 @@ class MovieViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
-  weak var delegate: MovieDelegate!
+  var delegate: MovieDelegate!
   
   var movies = [Movie]()
   var currentPage = 0
@@ -46,7 +46,7 @@ class MovieViewController: UIViewController {
   
   func loadMovies(page: Int = 1) {
     self.delegate.requestDataFromNetwork(page: page) {
-      (success, decodable) in
+      [unowned self] (success, decodable) in
       if success {
         let moviePage = decodable as! Page
         let results = moviePage.results
@@ -59,8 +59,11 @@ class MovieViewController: UIViewController {
         }
       } else {
         let error = decodable as! Response
-        // TODO: UIAlertControler
         print(error.statusMessage)
+        DispatchQueue.main.async {
+          let alert = UIAlertController.serverAlert()
+          self.present(alert, animated: true, completion: nil)
+        }
       }
     }
   }

@@ -20,7 +20,7 @@ class MoviePageController {
       "include_adult": "false",
       "language": "EN-US"
     ]
-    Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+    NetworkController.alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
       .responseJSON {
         (response: DataResponse<Any>) in
         NetworkController.process(response: response, type: Page.self, completion: completion)

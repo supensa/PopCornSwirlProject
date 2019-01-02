@@ -18,7 +18,7 @@ class GenreViewController: UIViewController {
     super.viewDidLoad()
     self.setupDelegation()
     GenreListController().sendRequest() {
-      (success: Bool, decodable: Decodable) in
+      [unowned self] (success: Bool, decodable: Decodable) in
       if success {
         DispatchQueue.main.async {
           let genres = decodable as! GenreList
@@ -27,9 +27,12 @@ class GenreViewController: UIViewController {
           self.waitingView.isHidden = true
         }
       } else {
-        // TODO: Handle Error create UIAlert
         let error = decodable as! Response
         print(error.statusMessage)
+        DispatchQueue.main.async {
+          let alert = UIAlertController.serverAlert()
+          self.present(alert, animated: true, completion: nil)
+        }
       }
     }
   }

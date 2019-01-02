@@ -14,7 +14,7 @@ class MovieController {
     let parameters: [String: Any] = [
       "api_key": API.key
     ]
-    Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+    NetworkController.alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
       .responseJSON {
         (response: DataResponse<Any>) in
         NetworkController.process(response: response, type: Movie.self, completion: completion)

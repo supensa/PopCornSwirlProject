@@ -80,11 +80,11 @@
                         <constraints>
                             <constraint firstItem="7g2-po-Q28" firstAttribute="centerX" secondItem="IGf-3F-8jz" secondAttribute="centerX" id="9cw-vI-xHL"/>
                             <constraint firstItem="xrR-1v-30Z" firstAttribute="trailing" secondItem="E1b-Q2-lct" secondAttribute="trailing" id="C9A-GA-MhB"/>
-                            <constraint firstItem="1zf-vn-i3t" firstAttribute="trailing" secondItem="xrR-1v-30Z" secondAttribute="trailing" id="DTk-2K-RzH"/>
                             <constraint firstItem="xrR-1v-30Z" firstAttribute="trailing" secondItem="Gpw-F3-kAO" secondAttribute="trailing" id="GJX-bh-af4"/>
                             <constraint firstItem="7g2-po-Q28" firstAttribute="top" secondItem="xrR-1v-30Z" secondAttribute="top" id="HZu-Kq-e5m"/>
                             <constraint firstItem="1zf-vn-i3t" firstAttribute="bottom" secondItem="xrR-1v-30Z" secondAttribute="bottom" id="HfA-9Y-ReM"/>
-                            <constraint firstItem="1zf-vn-i3t" firstAttribute="leading" secondItem="xrR-1v-30Z" secondAttribute="leading" id="Ky8-0W-FXz"/>
+                            <constraint firstItem="1zf-vn-i3t" firstAttribute="trailing" secondItem="xrR-1v-30Z" secondAttribute="trailing" id="Mb1-zs-5qn"/>
+                            <constraint firstItem="1zf-vn-i3t" firstAttribute="leading" secondItem="xrR-1v-30Z" secondAttribute="leading" id="Qb7-1m-Kyb"/>
                             <constraint firstItem="E1b-Q2-lct" firstAttribute="top" secondItem="Gpw-F3-kAO" secondAttribute="bottom" constant="16" id="TAt-QW-4Oy"/>
                             <constraint firstItem="E1b-Q2-lct" firstAttribute="leading" secondItem="xrR-1v-30Z" secondAttribute="leading" id="TKr-tV-CCb"/>
                             <constraint firstItem="Gpw-F3-kAO" firstAttribute="leading" secondItem="xrR-1v-30Z" secondAttribute="leading" id="UR3-eh-BeG"/>
