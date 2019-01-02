@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController {
   static func serverAlert() -> UIAlertController {
-    let title = "Error while reaching the Server"
+    let title = "Server not available"
     let message = "Please try later."
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: nil)

@@ -72,8 +72,9 @@ class MovieDetailViewController: UIViewController {
   }
   
   @objc func updateFavoriteButton() {
+    guard let tabBar = self.navigationController?.tabBarController as? TabBarController
+      else { return }
     self.favoriteButton.isUserInteractionEnabled = true
-    let tabBar = self.navigationController?.tabBarController as! TabBarController
     if tabBar.favorite.isFavorite(movieId: self.movie.id) {
       self.favoriteButton.setTitle("Remove Favorite", for: .normal)
       self.changeBackGroundColor(self.favoriteButton, color: .red)
@@ -85,8 +86,9 @@ class MovieDetailViewController: UIViewController {
   }
   
   @objc func updateWatchedListButton() {
+    guard let tabBar = self.navigationController?.tabBarController as? TabBarController
+      else { return }
     self.watchedListButton.isUserInteractionEnabled = true
-    let tabBar = self.navigationController?.tabBarController as! TabBarController
     if tabBar.watchedList.isInWatchedList(movieId: self.movie.id) {
       self.watchedListButton.setTitle("Remove Watched", for: .normal)
       self.changeBackGroundColor(self.watchedListButton, color: .red)
