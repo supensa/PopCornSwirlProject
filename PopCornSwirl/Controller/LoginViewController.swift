@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
   
   @IBOutlet weak var usernameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
+  
+  var persistentContainer: NSPersistentContainer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,6 +45,7 @@ class LoginViewController: UIViewController {
       storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as! LoadingViewController
     loadingViewController.username =  self.usernameTextField.text
     loadingViewController.password =  self.passwordTextField.text
+    loadingViewController.persistentContainer = self.persistentContainer
     self.present(loadingViewController, animated: true, completion: nil)
   }
 }

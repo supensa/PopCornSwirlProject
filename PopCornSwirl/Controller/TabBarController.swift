@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class TabBarController: UITabBarController {
   var sessionId: String!
+  var persistentContainer: NSPersistentContainer!
+  
   var watchedList = Watched()
   var favorite = Favorite()
   private var watchedListDelegation: WatchedListDelegation?

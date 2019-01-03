@@ -46,7 +46,7 @@ class MovieViewController: UIViewController {
   
   func loadMovies(page: Int = 1) {
     self.delegate.requestDataFromNetwork(page: page) {
-      [unowned self] (success, decodable) in
+      (success, decodable) in
       if success {
         let moviePage = decodable as! Page
         let results = moviePage.results

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoadingViewController: UIViewController {
   
@@ -15,6 +16,8 @@ class LoadingViewController: UIViewController {
   
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var backButton: UIBarButtonItem!
+  
+  var persistentContainer: NSPersistentContainer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,6 +54,7 @@ class LoadingViewController: UIViewController {
       let _ = navigationController.viewControllers.first as? GenreViewController {
       // Dependency injection for session id
       tabBarController.sessionId = session.id
+      tabBarController.persistentContainer = self.persistentContainer
       // Present tabBarController
       self.present(tabBarController, animated: true, completion: nil)
     }

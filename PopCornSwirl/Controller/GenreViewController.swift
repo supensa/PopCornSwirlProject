@@ -18,7 +18,7 @@ class GenreViewController: UIViewController {
     super.viewDidLoad()
     self.setupDelegation()
     GenreListController().sendRequest() {
-      [unowned self] (success: Bool, decodable: Decodable) in
+      (success: Bool, decodable: Decodable) in
       if success {
         DispatchQueue.main.async {
           let genres = decodable as! GenreList

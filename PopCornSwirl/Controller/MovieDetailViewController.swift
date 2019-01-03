@@ -15,6 +15,7 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet weak var overviewTextView: UITextView!
   @IBOutlet weak var watchedListButton: UIButton!
   @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var noteButton: UIButton!
   
   @IBOutlet weak var bannerView: GADBannerView!
   
@@ -64,6 +65,8 @@ class MovieDetailViewController: UIViewController {
     self.favoriteButton.clipsToBounds = true
     self.watchedListButton.layer.cornerRadius = 5
     self.watchedListButton.clipsToBounds = true
+    self.noteButton.layer.cornerRadius = 5
+    self.noteButton.clipsToBounds = true
   }
   
   func updateButtons() {
@@ -145,6 +148,12 @@ class MovieDetailViewController: UIViewController {
         }
       }
     }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let noteViewController = segue.destination as! NoteViewController
+    noteViewController.movie = self.movie
+    noteViewController.image = self.poster.image
   }
   
   func changeBackGroundColor(_ button: UIButton, color: UIColor, duration: TimeInterval = 0.5) {
