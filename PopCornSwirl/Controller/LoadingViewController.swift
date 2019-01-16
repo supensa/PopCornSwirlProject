@@ -52,9 +52,10 @@ class LoadingViewController: UIViewController {
       as! TabBarController
     if let navigationController = tabBarController.viewControllers?.first as? UINavigationController,
       let _ = navigationController.viewControllers.first as? GenreViewController {
-      // Dependency injection for session id
+      // Dependency injection
       tabBarController.sessionId = session.id
       tabBarController.persistentContainer = self.persistentContainer
+      tabBarController.username = self.username
       // Present tabBarController
       self.present(tabBarController, animated: true, completion: nil)
     }

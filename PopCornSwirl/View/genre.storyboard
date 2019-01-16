@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Genre View Controller-->
+        <!--Genres-->
         <scene sceneID="UQ4-e5-wIP">
             <objects>
                 <viewController storyboardIdentifier="WelcomeViewController" id="oNq-0z-0DX" customClass="GenreViewController" customModule="PopCornSwirl" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,9 +74,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdf-eh-Qnd"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AHL-GB-WNX">
-                        <nil key="title"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Genres" id="AHL-GB-WNX"/>
                     <connections>
                         <outlet property="tableView" destination="A9g-vE-gHM" id="ogm-8P-vn0"/>
                         <outlet property="waitingView" destination="8GY-K7-BUu" id="V6y-st-Ub6"/>
@@ -115,6 +113,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list" width="69" height="69"/>
+        <image name="list" width="84" height="84"/>
     </resources>
 </document>

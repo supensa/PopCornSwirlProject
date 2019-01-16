@@ -12,6 +12,7 @@ import CoreData
 class TabBarController: UITabBarController {
   var sessionId: String!
   var persistentContainer: NSPersistentContainer!
+  var username: String!
   
   var watchedList = Watched()
   var favorite = Favorite()

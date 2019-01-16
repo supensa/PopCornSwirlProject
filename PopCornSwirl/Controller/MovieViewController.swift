@@ -25,6 +25,9 @@ class MovieViewController: UIViewController {
   var currentPage = 0
   var totalPages = 0
   
+  private var imageHeight = 0.0
+  private var imageWidth = 0.0
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.collectionView.delegate = self
@@ -86,12 +89,27 @@ class MovieViewController: UIViewController {
   }
 }
 
+// MARK: --> Size class to resize Image in Collection View
+extension MovieViewController {
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    switch (traitCollection.horizontalSizeClass, traitCollection.verticalSizeClass) {
+    case (.regular, .regular):
+      self.imageWidth = 185 * 0.75 * 2
+      self.imageHeight = 250 * 0.75 * 2
+    default:
+      self.imageWidth = 185 * 0.75
+      self.imageHeight = 250 * 0.75
+    }
+  }
+}
+
 // MARK: --> UICollectionViewDelegateFlowLayout
 extension MovieViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 185 * 0.75, height: 250 * 0.75)
+    return CGSize(width: self.imageWidth, height: self.imageHeight)
   }
   
   func collectionView(_ collectionView: UICollectionView,

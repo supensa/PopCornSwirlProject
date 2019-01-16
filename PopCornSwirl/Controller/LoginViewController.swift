@@ -13,21 +13,38 @@ class LoginViewController: UIViewController {
   
   @IBOutlet weak var usernameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var loginButton: UIButton!
   
   var persistentContainer: NSPersistentContainer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.passwordTextField.isSecureTextEntry = true
+    self.setupLoginButton()
+    self.setupTextFields()
     //Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
+    self.passwordTextField.inputAssistantItem.leadingBarButtonGroups = []
+    self.passwordTextField.inputAssistantItem.trailingBarButtonGroups = []
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     self.usernameTextField.text = ""
     self.passwordTextField.text = ""
+  }
+  
+  func setupLoginButton() {
+    self.loginButton.layer.cornerRadius = 5
+    self.loginButton.clipsToBounds = true
+  }
+  
+  func setupTextFields() {
+    self.passwordTextField.isSecureTextEntry = true
+    self.passwordTextField.inputAssistantItem.leadingBarButtonGroups = []
+    self.passwordTextField.inputAssistantItem.trailingBarButtonGroups = []
+    self.usernameTextField.inputAssistantItem.leadingBarButtonGroups = []
+    self.usernameTextField.inputAssistantItem.trailingBarButtonGroups = []
   }
   
   //Calls this function when the tap is recognized.

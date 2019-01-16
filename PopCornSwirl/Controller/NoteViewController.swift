@@ -14,13 +14,22 @@ class NoteViewController: UIViewController {
   
   @IBOutlet weak var poster: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var saveButton: UIButton!
   @IBOutlet weak var textView: UITextView!
+  @IBOutlet weak var saveButton: UIButton!
   @IBOutlet weak var bannerView: GADBannerView!
+  @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+  
+  private var accessoryView: UIView!
   
   var movie: Movie!
   var image: UIImage?
-  var note: Note?
+  var dataController: NoteDataController!
+  var username: String {
+    guard let tabBarController = navigationController?.tabBarController as? TabBarController
+      else { fatalError() }
+    return tabBarController.username!
+  }
   
   private let defaultColor = UIColor(red: 101/255, green: 214/255, blue: 118/255, alpha: 1)
   private let defaultText = "Write a note here."
@@ -29,18 +38,21 @@ class NoteViewController: UIViewController {
     super.viewDidLoad()
     self.setupViews()
     self.setupGoogleBannerView()
+    self.setupDataController()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.setNote()
-    self.textView.text = self.note?.comment ?? self.defaultText
+    self.setDataInViews()
+    self.registerNotifications()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.unregisterNotifications()
   }
   
   func setupViews() {
-    self.textView.delegate = self
-    self.poster.image = self.image
-    self.titleLabel.text = self.movie.title
     self.saveButton.layer.cornerRadius = 5
     self.saveButton.clipsToBounds = true
   }
@@ -56,55 +68,32 @@ class NoteViewController: UIViewController {
     bannerView.load(request)
   }
   
-  func setNote() {
-    if let navigationController = navigationController,
-      let tabBarController = navigationController.tabBarController as? TabBarController,
-      let persistentStore = tabBarController.persistentContainer {
-      
-      let context = persistentStore.viewContext
-      self.note = fetchNote(context: context)
-    }
+  func setupDataController() {
+    let context = self.getManagedObjectContext()
+    self.dataController = NoteDataController(context)
+  }
+  
+  func setDataInViews() {
+    self.poster.image = self.image
+    self.titleLabel.text = self.movie.title
+    let note = dataController.fetchNote(movieId: self.movie.id, username: self.username)
+    self.textView.text = note?.comment ?? self.defaultText
   }
   
   @IBAction func saveButtonTapped(_ sender: Any) {
+    guard let tabBarController = self.navigationController?.tabBarController as? TabBarController
+      else { fatalError() }
+
     self.textView.resignFirstResponder()
-    let context = self.getManagedObjectContext()
     
     if self.textView.text == self.defaultText ||
       self.textView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-      self.removeNote(context: context)
+      self.dataController.removeNote()
       self.textView.text = self.defaultText
-      return
-    }
-    self.changeButtonAppearance(isWaiting: true)
-    // Add note to Persitent Store
-    self.addNote(context: context)
-    self.changeButtonAppearance(isWaiting: false)
-  }
-  
-  func addNote(context: NSManagedObjectContext) {
-    if self.note == nil {
-      self.note = Note(context: context)
-      self.note?.id = Float(self.movie.id)
-    }
-    self.note?.comment = self.textView.text
-    do {
-      try context.save()
-    } catch {
-      print(error.localizedDescription)
-    }
-  }
-  
-  func removeNote(context: NSManagedObjectContext) {
-    if let note = self.note {
-      self.changeButtonAppearance(isWaiting: true)
-      context.delete(note)
-      do {
-        try context.save()
-      } catch {
-        print(error.localizedDescription)
-      }
-      self.changeButtonAppearance(isWaiting: false)
+    } else {
+      // Add note to Persitent Store
+      let username = tabBarController.username!
+      self.dataController.addNote(movieId: self.movie.id, username: username, comment: self.textView.text)
     }
   }
   
@@ -118,36 +107,6 @@ class NoteViewController: UIViewController {
     return persistentStore.viewContext
   }
   
-  func changeButtonAppearance(isWaiting: Bool) {
-    var color = self.defaultColor
-    var title = "Save"
-    var isUserInteractionEnabled = true
-    var duration = 0.5
-    
-    if isWaiting {
-      color = .lightGray
-      duration = 0.2
-      isUserInteractionEnabled = false
-      title = "WAITING..."
-    }
-    
-    // Change button appearance
-    self.changeBackGroundColor(self.saveButton, color: color, duration: duration)
-    self.saveButton.setTitle(title, for: .normal)
-    saveButton.isUserInteractionEnabled = isUserInteractionEnabled
-  }
-  
-  func fetchNote(context: NSManagedObjectContext) -> Note? {
-    let fetchRequest: NSFetchRequest<Note> = NSFetchRequest(entityName: "Note")
-    let idPredicate = NSPredicate(format: "id = %d", self.movie.id)
-    fetchRequest.predicate = idPredicate
-    var notes = [Note]()
-    if let results = try? context.fetch(fetchRequest) {
-      notes = results
-    }
-    return notes.first
-  }
-  
   func changeBackGroundColor(_ button: UIButton, color: UIColor, duration: TimeInterval = 0.5) {
     UIView.animate(withDuration: duration, animations: {
       button.backgroundColor = color
@@ -155,10 +114,40 @@ class NoteViewController: UIViewController {
   }
 }
 
+// MARK: Keyboard appearance interaction
+extension NoteViewController {
+  func registerNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  func unregisterNotifications() {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  @objc func keyboardWillShow(notification: NSNotification){
+    guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+    let height = keyboardFrame.cgRectValue.size.height
+    scrollView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height
+      - bannerView.frame.height
+      - tabBarController!.tabBar.frame.size.height
+    
+    let y = scrollView.contentOffset.y
+    let x = scrollView.contentOffset.x
+    scrollView.contentOffset = CGPoint(x: x, y: y + height / 2)
+  }
+  
+  @objc func keyboardWillHide(notification: NSNotification){
+    scrollView.contentInset.bottom = 0
+  }
+}
+
+// MARK: UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if self.textView.text == self.defaultText {
-      self.textView.text = ""
+    if textView.text == self.defaultText {
+      textView.text = ""
     }
   }
 }
