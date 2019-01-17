@@ -55,6 +55,10 @@ class NoteViewController: UIViewController {
   func setupViews() {
     self.saveButton.layer.cornerRadius = 5
     self.saveButton.clipsToBounds = true
+    self.textView.layer.borderWidth = 1.5
+    self.textView.layer.borderColor = UIColor.lightGray.cgColor
+    self.textView.layer.cornerRadius = 5
+    self.textView.clipsToBounds = true
   }
   
   func setupGoogleBannerView() {
