@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represent list of movie already watched
 class Watched {
   var list = [Int: Bool]()
   
@@ -28,7 +29,12 @@ class Watched {
       }
     }
   }
-  
+  /// Swap the status of a movie as already watched or not.
+  ///
+  /// - Parameters:
+  ///   - sessionId: Current session Id
+  ///   - movieId: Movie that needs its status to be swapped
+  ///   - completion: Closure executed when status swap is completed
   func toggle(sessionId: String, movieId: Int, completion: ((Bool, Decodable) -> ())? = nil) {
     var inWatchedList: Bool
     if self.isInWatchedList(movieId: movieId) {
@@ -52,7 +58,10 @@ class Watched {
       }
     }
   }
-  
+  /// Indicate whether the movie belongs to the watched list
+  ///
+  /// - Parameter movieId: Id of movie to check
+  /// - Returns: true if it is a favorite movie
   func isInWatchedList(movieId: Int) -> Bool {
     return self.list[movieId] != nil
   }

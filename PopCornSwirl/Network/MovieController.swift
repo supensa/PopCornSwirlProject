@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+
+/// Class requesting the details of a sepcific movie from web service
 class MovieController {
   func sendRequest(movieId: Int, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.movie + "\(movieId)"

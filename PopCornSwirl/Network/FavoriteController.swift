@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// Class used the "favorite" feature to request list of favorite movies or set a movie as favorite
 class FavoriteController {
   func sendRequest(page: Int = 1, sessionId: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.favoritePage

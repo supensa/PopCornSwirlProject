@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represent list of Favorite
 class Favorite {
   var list = [Int: Bool]()
   
@@ -30,6 +31,12 @@ class Favorite {
     }
   }
   
+  /// Swap the status of a movie as favorite or not.
+  ///
+  /// - Parameters:
+  ///   - sessionId: Current session Id
+  ///   - movieId: Movie that needs its status to be swapped
+  ///   - completion: Closure executed when status swap is completed
   func toggle(sessionId: String, movieId: Int, completion: ((Bool, Decodable) -> ())? = nil) {
     var isFavorite: Bool
     if self.isFavorite(movieId: movieId) {
@@ -54,6 +61,10 @@ class Favorite {
     }
   }
   
+  /// Indicate if the movie belongs to the favorite list
+  ///
+  /// - Parameter movieId: Id of movie to check
+  /// - Returns: true if it is a favorite movie
   func isFavorite(movieId: Int) -> Bool {
     return self.list[movieId] != nil
   }

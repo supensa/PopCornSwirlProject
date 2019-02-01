@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-class ImageController {  
+/// Class downloading an image from a distant server
+class ImageController {
   func downloadFrom(relativePath: String, completion: @escaping (UIImage)->()) {
     let url = "https://image.tmdb.org/t/p/w185" + relativePath
     NetworkController.alamofire.request(url).responseImage {

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 
+/// Class used to get the list of the different Genres from web service
 class GenreListController {
   func sendRequest(completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.genreList

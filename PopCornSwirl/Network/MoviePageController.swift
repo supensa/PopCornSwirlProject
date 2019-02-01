@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// Class used to request a list of movies for a specific Genre from web service
 class MoviePageController {
   func sendRequest(page:Int = 1, genreId: Int, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.moviePage

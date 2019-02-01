@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     super.viewDidLoad()
     self.setupLoginButton()
     self.setupTextFields()
-    //Looks for single or multiple taps.
+    // Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tap)
     self.passwordTextField.inputAssistantItem.leadingBarButtonGroups = []
@@ -47,9 +47,9 @@ class LoginViewController: UIViewController {
     self.usernameTextField.inputAssistantItem.trailingBarButtonGroups = []
   }
   
-  //Calls this function when the tap is recognized.
+  // Calls this function when the tap is recognized.
   @objc func dismissKeyboard() {
-    //Causes the view (or one of its embedded text fields) to resign the first responder status.
+    // Causes the view (or one of its embedded text fields) to resign the first responder status.
     view.endEditing(true)
   }
   

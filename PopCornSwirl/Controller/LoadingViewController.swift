@@ -25,6 +25,7 @@ class LoadingViewController: UIViewController {
     self.backButton.isEnabled = false
     self.messageLabel.adjustsFontSizeToFitWidth = true
     
+    // Try to Authenticate the user
     AuthenticationController().sendRequest(username: username!, password: password!) {
       (success: Bool, decodable: Decodable) in
       if success {

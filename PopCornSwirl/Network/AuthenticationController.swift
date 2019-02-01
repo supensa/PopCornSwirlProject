@@ -10,7 +10,9 @@ import Foundation
 import Alamofire
 
 
-class AuthenticationController {  
+/// Class used to authenticate the user by sending a request to Web Service
+class AuthenticationController {
+  
   func sendRequest(username: String, password: String, completion: @escaping (Bool, Decodable) -> Void) {
     let url = API.newToken
     
