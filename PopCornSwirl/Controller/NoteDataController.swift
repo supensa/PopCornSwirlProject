@@ -22,7 +22,7 @@ class NoteDataController {
                comment: String) {
     if self.note == nil {
       self.note = Note(context: context)
-      self.note?.id = Float(movieId)
+      self.note?.id = Int64(movieId)
       self.note?.username = username
     }
     self.note?.comment = comment
