@@ -3,13 +3,13 @@
 ## Core Data - Alamofire - GoogleAdMob
 
 This application uses ["themoviedb" webservice.](https://developers.themoviedb.org/3) <br/>
-The user first needs to create an account on their website in order to use this application.
+The user needs to create an account on their website in order to use this application.
 
 <p align="center">
 <img src="Images/logo.png" width="300">
 </p><br/>
 
-This application allows the user to add/remove movies in their watched and/or favorite list using the webservice.<br/>
+This application lets the user add/remove movies to their watched and/or favorite list using the webservice.<br/>
 The user can write a note for a movie. These notes are saved locally using Core Data.
 
 
@@ -20,7 +20,7 @@ The user can write a note for a movie. These notes are saved locally using Core 
 </p><br/>
 
 ## Genre Screen
-The user first selects a particular genre from a list.<br/> 
+The user first selects a particular genre from the list.<br/> 
 
 <p align="center">
 <img src="Images/portrait2.png" width="300">
@@ -39,21 +39,21 @@ The user can decides to tap on the "Notes" button.<br/>
 <img src="Images/portrait4.png" width="300">
 </p><br/>
 
-The user can add an note for the selected movie.<br/> 
+The user can add a note for the selected movie.<br/> 
 
 <p align="center">
 <img src="Images/portrait5.png" width="300">
 </p><br/>
 
-The layout of the app is changed according to the keyboard.<br/>
+The layout of the app is changed according to the keyboard's layout.<br/>
 
 <p align="center">
 <img src="Images/portrait6.png" width="300">
 </p><br/>
 
 ## Watch and Favorite list
-The user can add a movie from the watch and/or favorite list by tapping on "Add Favorite" / "Add Watched" buttons.  
-Those buttons change color and text so the user can tap them again the remove the movie from those lists.
+The user can add a movie from the watch and/or favorite list by tapping on "Add Favorite" / "Add Watched" buttons. <br/> 
+Those buttons change their color and their title so they can be used again to remove the movie from those lists.
 
 <p align="center">
 <img src="Images/portrait4.png" width="300">
