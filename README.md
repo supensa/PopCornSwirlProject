@@ -1,4 +1,3 @@
-#  OpenClassrooms - iOS developer path - iOS Project 9
 ## PopCornSwirl - Portrait (iPhones and iPads)
 ## Core Data - Alamofire - GoogleAdMob
 
