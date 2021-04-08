@@ -5,7 +5,7 @@ This application uses ["themoviedb" webservice.](https://developers.themoviedb.o
 The user needs to create an account on their website in order to use this application.
 
 <p align="center">
-<img src="Images/logo.png" width="300">
+<img src="Images/logo.svg" width="300">
 </p><br/>
 
 This application lets the user add/remove movies to their watched and/or favorite list using the webservice.<br/>
