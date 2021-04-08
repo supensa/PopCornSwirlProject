@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 PopCornSwirl.xcodeproj/xcuserdata
 PopCornSwirl.xcworkspace/xcuserdata
 
 PopCornSwirl/Network/API+Ext.swift
 
 .DS_STORE
+=======
+PopCornSwirl.xcworkspace/xcuserdata
+
+API+Ext.swift
+
+.DS_STORE
+
+>>>>>>> second

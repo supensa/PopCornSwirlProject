@@ -14,12 +14,14 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var usernameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
+  @IBOutlet weak var createAccountButton: UIButton!
   
   var persistentContainer: NSPersistentContainer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupLoginButton()
+    self.setupCreateAccountButton()
     self.setupTextFields()
     // Looks for single or multiple taps.
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -37,6 +39,11 @@ class LoginViewController: UIViewController {
   func setupLoginButton() {
     self.loginButton.layer.cornerRadius = 5
     self.loginButton.clipsToBounds = true
+  }
+  
+  func setupCreateAccountButton() {
+    self.createAccountButton.layer.cornerRadius = 5
+    self.createAccountButton.clipsToBounds = true
   }
   
   func setupTextFields() {
@@ -63,7 +70,20 @@ class LoginViewController: UIViewController {
     loadingViewController.username =  self.usernameTextField.text
     loadingViewController.password =  self.passwordTextField.text
     loadingViewController.persistentContainer = self.persistentContainer
+    loadingViewController.modalPresentationStyle = .fullScreen
     self.present(loadingViewController, animated: true, completion: nil)
+  }
+  
+  /// Create an account on the website
+  ///
+  /// - Parameter sender: Button being tapped
+  @IBAction func createAccountButtonTapped(_ sender: Any) {
+    let url = URL(string: "https://www.themoviedb.org/account/signup")
+    if let url = url {
+      UIApplication.shared.open(url,
+                                options: [:],
+                                completionHandler: nil)
+    }
   }
 }
 

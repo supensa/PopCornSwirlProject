@@ -57,6 +57,7 @@ class LoadingViewController: UIViewController {
       tabBarController.sessionId = session.id
       tabBarController.persistentContainer = self.persistentContainer
       tabBarController.username = self.username
+      tabBarController.modalPresentationStyle = .fullScreen
       // Present tabBarController
       self.present(tabBarController, animated: true, completion: nil)
     }

@@ -36,7 +36,8 @@ class MovieViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+    super.viewWillAppear(animated)
+    self.updateImageSizeForCollectionView()
     self.loadMovies()
   }
   
@@ -93,6 +94,10 @@ class MovieViewController: UIViewController {
 extension MovieViewController {
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
+    self.updateImageSizeForCollectionView()
+  }
+  
+  fileprivate func updateImageSizeForCollectionView() {
     switch (traitCollection.horizontalSizeClass, traitCollection.verticalSizeClass) {
     case (.regular, .regular):
       self.imageWidth = 185 * 0.75 * 2

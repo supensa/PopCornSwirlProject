@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t02-Dz-Nsh">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t02-Dz-Nsh">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +13,11 @@
             <objects>
                 <viewController id="PBI-1p-XLB" customClass="MovieDetailViewController" customModule="PopCornSwirl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGf-3F-8jz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TMDB" translatesAutoresizingMaskIntoConstraints="NO" id="7g2-po-Q28">
-                                <rect key="frame" x="85" y="20" width="150" height="150"/>
+                                <rect key="frame" x="85" y="0.0" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7g2-po-Q28" secondAttribute="height" multiplier="1:1" id="faH-JO-S13"/>
                                     <constraint firstAttribute="width" constant="300" id="hVb-r8-8qP"/>
@@ -38,7 +36,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-F3-kAO">
-                                <rect key="frame" x="16" y="186" width="288" height="24"/>
+                                <rect key="frame" x="16" y="166" width="288" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +45,7 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zf-vn-i3t" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="488" width="320" height="60"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="W0g-bF-NIB">
@@ -56,13 +54,13 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1b-Q2-lct">
-                                <rect key="frame" x="16" y="226" width="288" height="176"/>
+                                <rect key="frame" x="16" y="206" width="288" height="176"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="3MF-67-XEz"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -70,11 +68,11 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 </variation>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ih-7e-zV2" userLabel="Container">
-                                <rect key="frame" x="16" y="418" width="288" height="74"/>
+                                <rect key="frame" x="16" y="398" width="288" height="74"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-Sl-Znr">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="74"/>
@@ -82,10 +80,10 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="cyu-2a-LkA">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="29"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y0-mo-G5M">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y0-mo-G5M">
                                                         <rect key="frame" x="0.0" y="0.0" width="132.5" height="29"/>
                                                         <color key="backgroundColor" red="0.39659094810000001" green="0.83785110709999999" blue="0.46465241909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                         <state key="normal" title="Add in favorites">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -96,10 +94,10 @@
                                                             <action selector="favoriteBtnTapped:" destination="PBI-1p-XLB" eventType="touchUpInside" id="MgW-gJ-LlA"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ik5-bs-4Ui">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ik5-bs-4Ui">
                                                         <rect key="frame" x="155.5" y="0.0" width="132.5" height="29"/>
                                                         <color key="backgroundColor" red="0.39659094810000001" green="0.83785110709999999" blue="0.46465241909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                         <state key="normal" title="Add in watch list">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -112,10 +110,10 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrG-6t-Fhn">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrG-6t-Fhn">
                                                 <rect key="frame" x="0.0" y="45" width="288" height="29"/>
                                                 <color key="backgroundColor" red="0.39659094810000001" green="0.83785110709999999" blue="0.46465241909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <state key="normal" title="Notes">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -162,6 +160,7 @@
                                 </variation>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="xrR-1v-30Z"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xrR-1v-30Z" firstAttribute="trailing" secondItem="1ih-7e-zV2" secondAttribute="trailing" constant="16" id="8dx-q0-ysU"/>
@@ -180,7 +179,6 @@
                             <constraint firstItem="Gpw-F3-kAO" firstAttribute="trailing" secondItem="E1b-Q2-lct" secondAttribute="trailing" id="qjI-k0-8ge"/>
                             <constraint firstItem="E1b-Q2-lct" firstAttribute="trailing" secondItem="1ih-7e-zV2" secondAttribute="trailing" id="u1h-HS-ecW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xrR-1v-30Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="xkY-BE-m6V"/>
                     <connections>
@@ -202,11 +200,11 @@
             <objects>
                 <viewController id="D19-ko-zFE" customClass="NoteViewController" customModule="PopCornSwirl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Td1-F1-13V">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIp-nj-OY4">
-                                <rect key="frame" x="0.0" y="20" width="320" height="472"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="472"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okj-Au-3hP" userLabel="Content">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="472"/>
@@ -229,13 +227,13 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is a test." translatesAutoresizingMaskIntoConstraints="NO" id="HbV-zp-oWh">
                                                 <rect key="frame" x="16" y="198" width="288" height="213"/>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                                 <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                                 </variation>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-qY-OH4">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-qY-OH4">
                                                 <rect key="frame" x="16" y="427" width="288" height="29"/>
                                                 <color key="backgroundColor" red="0.39659094810000001" green="0.83785110709999999" blue="0.46465241909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -243,7 +241,7 @@
                                                         <variation key="heightClass=regular-widthClass=regular" constant="72"/>
                                                     </constraint>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -282,7 +280,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNq-DB-NPp" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="488" width="320" height="60"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="UeJ-F9-onX">
@@ -291,6 +289,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="kYj-KO-K40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="PNq-DB-NPp" secondAttribute="bottom" id="6nC-Zh-UXa"/>
@@ -301,7 +300,6 @@
                             <constraint firstItem="PNq-DB-NPp" firstAttribute="top" secondItem="BIp-nj-OY4" secondAttribute="bottom" constant="16" id="dF0-7Z-INu"/>
                             <constraint firstItem="PNq-DB-NPp" firstAttribute="trailing" secondItem="kYj-KO-K40" secondAttribute="trailing" id="wax-3u-dOC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kYj-KO-K40"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note" id="yTQ-uo-Lyn"/>
                     <connections>
@@ -327,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-lp-r9W">
-                                <rect key="frame" x="16" y="20" width="288" height="548"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="diK-C1-Tyj">
                                     <size key="itemSize" width="164" height="208"/>
@@ -379,15 +377,15 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouZ-wW-xcl">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAITING..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3X-JJ-CR3">
-                                        <rect key="frame" x="116.5" y="262" width="87.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                        <rect key="frame" x="113.5" y="272" width="93.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -398,6 +396,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rbK-uC-VJP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rbK-uC-VJP" firstAttribute="trailing" secondItem="ouZ-wW-xcl" secondAttribute="trailing" id="CQF-nD-IXf"/>
@@ -409,7 +408,6 @@
                             <constraint firstItem="rbK-uC-VJP" firstAttribute="bottom" secondItem="IeT-lp-r9W" secondAttribute="bottom" id="prU-Gg-EGe"/>
                             <constraint firstItem="ouZ-wW-xcl" firstAttribute="top" secondItem="rbK-uC-VJP" secondAttribute="top" id="tHW-ed-ieU"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rbK-uC-VJP"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="Ybl-0t-aU7"/>
                     <connections>
@@ -425,6 +423,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TMDB" width="200" height="200"/>
+        <image name="TMDB" width="100" height="100"/>
     </resources>
 </document>
