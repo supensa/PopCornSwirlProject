@@ -7,19 +7,19 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Class requesting the details of a sepcific movie from web service
 class MovieController {
   func sendRequest(movieId: Int, completion: @escaping (Bool, Decodable) -> Void) {
-    let url = API.movie + "\(movieId)"
-    let parameters: [String: Any] = [
-      "api_key": API.key
-    ]
-    NetworkController.alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-      .responseJSON {
-        (response: DataResponse<Any>) in
-        NetworkController.process(response: response, type: Movie.self, completion: completion)
+    let url = API.movie + "\(movieId)?api_key=\(API.key)"
+    
+    NetworkController.getRequest(url: url, errorHandler: completion) {
+      (data, response, error) in
+      if let data = data {
+        NetworkController.process(data: data, type: Movie.self, completion: completion)
+      } else {
+        completion(false, Response.init(id: nil, statusMessage: "Server failed to return the movie"))
+      }
     }
   }
 }

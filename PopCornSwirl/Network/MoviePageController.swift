@@ -7,24 +7,32 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Class used to request a list of movies for a specific Genre from web service
 class MoviePageController {
   func sendRequest(page:Int = 1, genreId: Int, completion: @escaping (Bool, Decodable) -> Void) {
-    let url = API.moviePage
-    let parameters: [String: Any] = [
-      "api_key": API.key,
-      "with_genres": genreId,
-      "page": page,
-      "sort_by": "popularity.desc",
-      "include_adult": "false",
-      "language": "EN-US"
+    
+    let queryItems: [URLQueryItem] = [
+      URLQueryItem.init(name: "api_key", value: API.key),
+      URLQueryItem.init(name: "with_genres", value: "\(genreId)"),
+      URLQueryItem.init(name: "page", value: "\(page)"),
+      URLQueryItem.init(name: "sort_by", value: "popularity.desc"),
+      URLQueryItem.init(name: "include_adult", value: "false"),
+      URLQueryItem.init(name: "language", value: "EN-US")
     ]
-    NetworkController.alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-      .responseJSON {
-        (response: DataResponse<Any>) in
-        NetworkController.process(response: response, type: Page.self, completion: completion)
+    
+    var urlComponents = URLComponents(string: API.moviePage)!
+    urlComponents.queryItems = queryItems
+    
+    let url: String = urlComponents.string!
+    
+    NetworkController.getRequest(url: url, errorHandler: completion) {
+      (data, response, error) in
+      if let data = data {
+        NetworkController.process(data: data, type: Page.self, completion: completion)
+      } else {
+        completion(false, Response(id: nil, statusMessage: "Server failed to return the list of movies"))
+      }
     }
   }
 }

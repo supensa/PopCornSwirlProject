@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
 import CoreData
 
 class NoteViewController: UIViewController {
@@ -16,7 +15,6 @@ class NoteViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var textView: UITextView!
   @IBOutlet weak var saveButton: UIButton!
-  @IBOutlet weak var bannerView: GADBannerView!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
   
@@ -37,7 +35,6 @@ class NoteViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupViews()
-    self.setupGoogleBannerView()
     self.setupDataController()
   }
   
@@ -60,18 +57,7 @@ class NoteViewController: UIViewController {
     self.textView.layer.cornerRadius = 5
     self.textView.clipsToBounds = true
   }
-  
-  func setupGoogleBannerView() {
-    // Sample Ad unit ID for banner: ca-app-pub-3940256099942544/2934735716
-    bannerView.adUnitID = API.adUnitID
-    bannerView.rootViewController = self
-    let request = GADRequest()
-    request.tag(forChildDirectedTreatment: true)
-    request.contentURL = "https://www.themoviedb.org/movie/\(self.movie.id)"
-    request.testDevices = [kGADSimulatorID]
-    bannerView.load(request)
-  }
-  
+    
   func setupDataController() {
     let context = self.getManagedObjectContext()
     self.dataController = NoteDataController(context)
@@ -132,18 +118,19 @@ extension NoteViewController {
   
   @objc func keyboardWillShow(notification: NSNotification){
     guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-    let height = keyboardFrame.cgRectValue.size.height
-    scrollView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height
-      - bannerView.frame.height
-      - tabBarController!.tabBar.frame.size.height
+    let keybaordRectangle = view.convert(keyboardFrame.cgRectValue, from: view.window)
+    let keyboardOverlap = scrollView.frame.maxY - keybaordRectangle.origin.y
     
-    let y = scrollView.contentOffset.y
-    let x = scrollView.contentOffset.x
-    scrollView.contentOffset = CGPoint(x: x, y: y + height / 2)
+    scrollView.contentInset.bottom = keyboardOverlap
+    scrollView.scrollIndicatorInsets.bottom = keyboardOverlap
+    
+    scrollView.contentOffset.y = keyboardOverlap
   }
   
   @objc func keyboardWillHide(notification: NSNotification){
     scrollView.contentInset.bottom = 0
+    scrollView.scrollIndicatorInsets.bottom = 0
+    scrollView.contentOffset = CGPoint.zero
   }
 }
 

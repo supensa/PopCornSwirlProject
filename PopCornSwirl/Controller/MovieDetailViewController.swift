@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
 
 class MovieDetailViewController: UIViewController {
   @IBOutlet weak var poster: UIImageView!
@@ -16,8 +15,6 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet weak var watchedListButton: UIButton!
   @IBOutlet weak var favoriteButton: UIButton!
   @IBOutlet weak var noteButton: UIButton!
-  
-  @IBOutlet weak var bannerView: GADBannerView!
   
   var movie: Movie!
   
@@ -32,29 +29,8 @@ class MovieDetailViewController: UIViewController {
     self.overviewTextView.text = self.movie.overview
     self.setupButtons()
     self.updateButtons()
-    self.setupGoogleBannerView()
-    
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(updateFavoriteButton),
-                                           name: Notification.Name("favoriteStatusChangeNotification"),
-                                           object: nil)
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(updateWatchedListButton),
-                                           name: Notification.Name("watchedListStatusChangeNotification"),
-                                           object: nil)
   }
   
-  func setupGoogleBannerView() {
-    // Sample Ad unit ID for banner: ca-app-pub-3940256099942544/2934735716
-    bannerView.adUnitID = API.adUnitID
-    bannerView.rootViewController = self
-    let request = GADRequest()
-    request.tag(forChildDirectedTreatment: true)
-    request.contentURL = "https://www.themoviedb.org/movie/\(self.movie.id)"
-    request.testDevices = [kGADSimulatorID]
-    bannerView.load(request)
-  }
-    
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.overviewTextView.isScrollEnabled = true
@@ -75,22 +51,24 @@ class MovieDetailViewController: UIViewController {
   }
   
   @objc func updateFavoriteButton() {
-    guard let tabBar = self.navigationController?.tabBarController as? TabBarController
+    DispatchQueue.main.async {
+      guard let tabBar = self.navigationController?.tabBarController as? TabBarController
       else { return }
-    self.favoriteButton.isUserInteractionEnabled = true
-    if tabBar.favorite.isFavorite(movieId: self.movie.id) {
-      self.favoriteButton.setTitle("Remove Favorite", for: .normal)
-      self.changeBackGroundColor(self.favoriteButton, color: .red)
+      self.favoriteButton.isUserInteractionEnabled = true
+      if tabBar.favorite.isFavorite(movieId: self.movie.id) {
+        self.favoriteButton.setTitle("Remove Favorite", for: .normal)
+        self.changeBackGroundColor(self.favoriteButton, color: .red)
       } else {
-      self.favoriteButton.setTitle("Add Favorite", for: .normal)
-      self.changeBackGroundColor(self.favoriteButton, color: self.defaultColor)
+        self.favoriteButton.setTitle("Add Favorite", for: .normal)
+        self.changeBackGroundColor(self.favoriteButton, color: self.defaultColor)
+      }
+      self.favoriteButton.layoutIfNeeded()
     }
-    self.favoriteButton.layoutIfNeeded()
   }
   
   @objc func updateWatchedListButton() {
     guard let tabBar = self.navigationController?.tabBarController as? TabBarController
-      else { return }
+    else { return }
     self.watchedListButton.isUserInteractionEnabled = true
     if tabBar.watchedList.isInWatchedList(movieId: self.movie.id) {
       self.watchedListButton.setTitle("Remove Watched", for: .normal)
@@ -111,10 +89,11 @@ class MovieDetailViewController: UIViewController {
     tabBar.favorite.toggle(sessionId: sessionId, movieId: self.movie.id) {
       (success, decodable) in
       if success {
-        NotificationCenter.default.post(name: Notification.Name("favoriteStatusChangeNotification"),
-                                        object: nil)
+        DispatchQueue.main.async {
+          self.updateFavoriteButton()
+        }
       } else {
-         // Handle Network Error
+        // Handle Network Error
         let error = decodable as! Response
         print(error.statusMessage)
         DispatchQueue.main.async {
@@ -135,8 +114,9 @@ class MovieDetailViewController: UIViewController {
     tabBar.watchedList.toggle(sessionId: sessionId, movieId: self.movie.id){
       (success, decodable) in
       if success {
-        NotificationCenter.default.post(name: Notification.Name("watchedListStatusChangeNotification"),
-                                        object: nil)
+        DispatchQueue.main.async {
+          self.updateWatchedListButton()
+        }
       } else {
         // Handle Network Error
         let error = decodable as! Response

@@ -30,7 +30,9 @@ class LoadingViewController: UIViewController {
       (success: Bool, decodable: Decodable) in
       if success {
         let session = decodable as! Session
-        self.presentGenreViewController(session: session)
+        DispatchQueue.main.async {
+          self.presentGenreViewController(session: session)
+        }
       } else {
         // Print error message
         // Enable back button

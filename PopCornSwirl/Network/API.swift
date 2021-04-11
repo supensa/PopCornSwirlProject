@@ -11,8 +11,12 @@ import Foundation
 struct API {
   // API.key is in another file not submitted on Github.
   // Please use your own API key
-//  private static let key = "Enter your API Key here"
+  // private static let key = "Enter your API Key here"
   private static let domain = "https://api.themoviedb.org/3/"
+  
+  static let scheme = "https"
+  static let host = "api.themoviedb.org"
+  static let path = "3"
   
   static let newToken = API.domain + "authentication/token/new?api_key=" + API.key
   static let login = API.domain + "authentication/token/validate_with_login?api_key=" + API.key
