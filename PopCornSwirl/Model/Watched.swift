@@ -13,7 +13,11 @@ class Watched {
   var list = [Int: Bool]()
   
   func loadList(sessionId: String) {
-    WatchedListController().sendRequest(sessionId: sessionId) { (success, decodable) in
+    WatchedListController().sendRequest(sessionId: sessionId) {
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         let favoritePage = decodable as! Page
         let movies = favoritePage.results
@@ -43,9 +47,12 @@ class Watched {
       inWatchedList = true
     }
     WatchedListController().set(inWatchedList: inWatchedList,
-                             movieId: movieId,
-                             sessionId: sessionId) {
-      (success, decodable) in
+                                movieId: movieId,
+                                sessionId: sessionId) {
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         if inWatchedList {
           self.list[movieId] = true

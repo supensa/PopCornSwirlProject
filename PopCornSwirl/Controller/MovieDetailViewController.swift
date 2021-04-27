@@ -87,7 +87,10 @@ class MovieDetailViewController: UIViewController {
     self.changeBackGroundColor(self.favoriteButton, color: .lightGray, duration: 0.2)
     self.favoriteButton.isUserInteractionEnabled = false
     tabBar.favorite.toggle(sessionId: sessionId, movieId: self.movie.id) {
-      (success, decodable) in
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         DispatchQueue.main.async {
           self.updateFavoriteButton()
@@ -112,7 +115,10 @@ class MovieDetailViewController: UIViewController {
     self.changeBackGroundColor(self.watchedListButton, color: .lightGray, duration: 0.2)
     self.watchedListButton.isUserInteractionEnabled = false
     tabBar.watchedList.toggle(sessionId: sessionId, movieId: self.movie.id){
-      (success, decodable) in
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         DispatchQueue.main.async {
           self.updateWatchedListButton()

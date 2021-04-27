@@ -14,7 +14,10 @@ class Favorite {
   
   func loadList(sessionId: String) {
     FavoriteController().sendRequest(sessionId: sessionId) {
-      (success, decodable) in
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         let favoritePage = decodable as! Page
         let movies = favoritePage.results
@@ -47,7 +50,10 @@ class Favorite {
     FavoriteController().set(asFavorite: isFavorite,
                              movieId: movieId,
                              sessionId: sessionId) {
-      (success, decodable) in
+      [weak self] (success, decodable) in
+
+      guard let self = self else { return }
+
       if success {
         if isFavorite {
           self.list[movieId] = true

@@ -86,10 +86,4 @@ class NetworkController {
   private static func createError(_ message: String = "Server failed to answer") -> Response {
     return Response(id: nil, statusMessage: message)
   }
-  
-//  static var alamofire: SessionManager = {
-//    let manager = Alamofire.SessionManager.default
-//    manager.session.configuration.timeoutIntervalForRequest = 10
-//    return manager
-//  }()
 }

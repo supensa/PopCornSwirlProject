@@ -15,7 +15,10 @@ class AuthenticationController {
     let url = API.newToken
     
     NetworkController.getRequest(url: url, errorHandler: errorHandler) {
-      (data, response, error) in
+      [weak self] (data, response, error) in
+      
+      guard let self = self else { return }
+      
       if let data = data {
         // Success
         self.processToken(username: username, password: password, data: data, errorHandler: errorHandler)
@@ -47,7 +50,10 @@ class AuthenticationController {
     let authentication = Authentication.init(username: username, password: password, requestToken: token)
     
     NetworkController.postRequest(url: url, encodable: authentication, errorHandler: errorHandler) {
-      (data, response, error) in
+      [weak self] (data, response, error) in
+      
+      guard let self = self else { return }
+      
       if let data = data {
         // Success
         self.processTokenValidation(data: data, errorHandler: errorHandler)
@@ -59,19 +65,19 @@ class AuthenticationController {
   }
   
   private func processTokenValidation(data: Data, errorHandler: @escaping (Bool, Decodable) -> Void) {
-  Parser().decode(Token.self, from: data) {
-    (success: Bool, decodable: Decodable) in
-    if success {
-      // Token
-      let token = decodable as! Token
-      self.requestSessionId(token: token.requestToken, errorHandler: errorHandler)
-    } else {
-      // Error Message
-      let error = decodable as! Response
-      errorHandler(false, error)
+    Parser().decode(Token.self, from: data) {
+      (success: Bool, decodable: Decodable) in
+      if success {
+        // Token
+        let token = decodable as! Token
+        self.requestSessionId(token: token.requestToken, errorHandler: errorHandler)
+      } else {
+        // Error Message
+        let error = decodable as! Response
+        errorHandler(false, error)
+      }
     }
   }
-}
   
   private func requestSessionId(token: String, errorHandler: @escaping (Bool, Decodable) -> Void) {
     let url = API.newSession
